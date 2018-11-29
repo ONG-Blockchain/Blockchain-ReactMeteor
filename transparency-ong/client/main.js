@@ -1,22 +1,18 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import React from 'react';
+//import React library
 
-import './main.html';
+import { Meteor } from 'meteor/meteor';
+//import Meteor library
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+import { render } from 'react-dom';
+//import the render function from react-dom
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
+import HelloMeteor from '../imports/HelloMeteor.jsx';
+//import the React component 
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
+import {todoContainer} from '../imports/api/todos'
+//import the mongo collection
+
+Meteor.startup(() => {
+  render(<HelloMeteor />, document.getElementById("app"));
 });
