@@ -1,22 +1,14 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import React from 'react';
+import {FlowRouter} from 'meteor/kadira:flow-router';
+import {mount} from 'react-mounter';
 
-import './main.html';
+import {MainLayout} from '../imports/ui/MainLayout/MainLayout.js';
+import Login from '../imports/ui/Login/Login.js';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
-
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
-
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
+FlowRouter.route('/', {
+	action() {
+		mount(MainLayout, {
+			content: (<Login/>)
+		})
+	}
 });
