@@ -1,4 +1,4 @@
-.body{
+.content{
     font-family: 'Roboto', sans-serif;
     margin: auto;
     position: absolute;
@@ -11,9 +11,8 @@
 }
 label{
     font-family: 'Roboto', sans-serif;
-    display: inline-block;
+    display: contents;
     width: 80px;
-    padding-left: 150px;
 }
 input{
     font-family: 'Roboto', sans-serif;
