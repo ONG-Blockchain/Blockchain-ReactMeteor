@@ -87,10 +87,10 @@ class Login extends React.Component {
     return (
       <div className="background container-fluid">
         <div className="row">
-          <div className="col">
+          <div className="col login">
             {login}
           </div>
-          <div className="col">
+          <div className="col register">
             {register}
           </div>
         </div>
