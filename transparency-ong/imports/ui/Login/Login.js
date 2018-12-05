@@ -131,7 +131,7 @@ class Login extends React.Component {
 
     return (
     	<div>
-    		<div className="background container-fluid">
+    		<div id="loginView" className="background container-fluid">
 	        	<div className="row centerVert">
 	          		<div className="col login">
 	            		{login}
