@@ -1,28 +1,14 @@
 import React from 'react';
 
-function LogoutButton(props) {
-  return (
-    <span class="navbar-text">
-    	<button class="btn btn-outline-success my-2 my-sm-0" >Cerrar Sesi&oacute;n</button>
-    </span>
-  );
-}
+import LoginControl from './LoginControl.js';
 
 export default class Navbar extends React.Component {
-	loggedIn(){
-		console.log(Meteor.userId());
-		return Meteor.userId() != null;
-	}
-	handleLogoutClick() {
-	    this.setState({logIn: false});
+	constructor(props) {
+	    super(props);
+	    this.state = {isLoggedIn: props.isLoggedIn};
 	}
 	render() {
-		let logIn = this.loggedIn();
-		let button;
-		if(logIn){
-			button = <LogoutButton/>;
-		} else
-			button = '';
+		const isLoggedIn = this.state.isLoggedIn;
 		return (
 			<div>
 				<nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -40,11 +26,7 @@ export default class Navbar extends React.Component {
 								<a className="nav-link" href="#">Link</a>
 							</li>
 						</ul>
-						{ logIn &&
-						<span class="navbar-text">
-					    	<button class="btn btn-outline-success my-2 my-sm-0" >Cerrar Sesi&oacute;n</button>
-					    </span>
-						}
+						<LoginControl isLoggedIn={isLoggedIn}> </LoginControl>
 					</div>
 				</nav>
 			</div>

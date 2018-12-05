@@ -6,6 +6,8 @@ import './Login.css';
 
 import Header from '../Header.js';
 
+import Navbar from '../Navbar/Navbar.js';
+
 class Login extends React.Component {
 	register(event){
 		var Profile = {
@@ -128,9 +130,10 @@ class Login extends React.Component {
         	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
       	</div>
     );
-
+	let isLoggedIn = false;
     return (
     	<div>
+    		<Navbar isLoggedIn={false}> </Navbar>
     		<div id="loginView" className="background container-fluid">
 	        	<div className="row centerVert">
 	          		<div className="col login">
