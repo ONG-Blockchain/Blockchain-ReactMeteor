@@ -52,14 +52,14 @@ class Login extends React.Component {
 
             		<div className="col-sm">
               			<label className="tag">Usuario: </label>
-              			<input type="text" id="userLogin"/>
+              			<input className="newsletter_input2" type="text" id="userLogin"/>
             		</div>
           		</div>
 
           		<div className="row">
             		<div className="col-sm">
               			<label className="tag">Contraseña: </label>
-              			<input type="password" id="passLogin"/>
+              			<input className="newsletter_input2" type="password" id="passLogin"/>
             		</div>
           		</div>
         	</div>
@@ -76,51 +76,51 @@ class Login extends React.Component {
           		<div className="row">
 
             		<div className="col-sm">
-              			<label className="registerlabel">Nombres: </label>
-              			<input type="text" className="registerinput" id="name"/>
+              			<label className="tag1">Nombres: </label>
+              			<input className="newsletter_input1" type="text"  id="name"/>
             		</div>
 
             		<div className="col-sm">
-              			<label className="registerlabel">Apellidos: </label>
-              			<input type="text" className="registerinput" id="lastname"/>
+              			<label className="tag1">Apellidos: </label>
+              			<input className="newsletter_input1" type="text"  id="lastname"/>
             		</div>
           		</div>
 
 	          	<div className="row">
 
 	            	<div className="col-sm">
-	              		<label  className="registerlabel">Usuario: </label>
-	              		<input type="text" className="registerinput" id="user"/>
+	              		<label  className="tag1">Usuario: </label>
+	              		<input className="newsletter_input1" type="text"  id="user"/>
 	            	</div>
 
 	            	<div className="col-sm">
-	              		<label className="registerlabel">Identidad: </label>
-	              		<input type="text" className="registerinput" id="identity"/>
+	              		<label className="tag1">Identidad: </label>
+	              		<input className="newsletter_input1" type="text"  id="identity"/>
 	            	</div>
 	          	</div>
 
 	          	<div className="row">
 	            	<div className="col-sm">
-	              		<label className="registerlabel">Contraseña: </label>
-	              		<input type="password" className="registerinput" id="pass"/>
+	              		<label className="tag1">Contraseña: </label>
+	              		<input className="newsletter_input1" type="password"  id="pass"/>
 	            	</div>
 
 	            	<div className="col-sm">
-	              		<label className="registerlabel">Confirmar Contraseña: </label>
-	              		<input type="password" className="registerinput"  id="pass2"/>
+	              		<label className="tag1">Confirmar Contraseña: </label>
+	              		<input className="newsletter_input1" type="password"  id="pass2"/>
 	            	</div>
 	          	</div>
 
 	          	<div className="row">
 
 	            	<div className="col-sm">
-	              		<label className="registerlabel">Telefono/Celular: </label>
-	              		<input type="text" className="registerinput" id="number"/>
+	              		<label className="tag1">Telefono/Celular: </label>
+	              		<input className="newsletter_input1" type="text"  id="number"/>
 	            	</div>
 
-	            	<div className="col-sm content">
-	              		<label className="registerlabel">Correo electronico: </label>
-	              		<input type="e-mail" className="registerinput" id="email"/>
+	            	<div className="col-sm">
+	              		<label className="tag1">Correo electronico: </label>
+	              		<input className="newsletter_input1" type="e-mail"  id="email"/>
 	            	</div>
 	          	</div>
 
