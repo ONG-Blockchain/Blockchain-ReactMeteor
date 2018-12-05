@@ -76,51 +76,51 @@ class Login extends React.Component {
           		<div className="row">
 
             		<div className="col-sm">
-              			<label>Nombres: </label>
-              			<input type="text" id="name"/>
+              			<label className="registerlabel">Nombres: </label>
+              			<input type="text" className="registerinput" id="name"/>
             		</div>
 
             		<div className="col-sm">
-              			<label>Apellidos: </label>
-              			<input type="text" id="lastname"/>
+              			<label className="registerlabel">Apellidos: </label>
+              			<input type="text" className="registerinput" id="lastname"/>
             		</div>
           		</div>
 
 	          	<div className="row">
 
 	            	<div className="col-sm">
-	              		<label >Usuario: </label>
-	              		<input type="text" id="user"/>
+	              		<label  className="registerlabel">Usuario: </label>
+	              		<input type="text" className="registerinput" id="user"/>
 	            	</div>
 
 	            	<div className="col-sm">
-	              		<label>Identidad: </label>
-	              		<input type="text" id="identity"/>
-	            	</div>
-	          	</div>
-
-	          	<div className="row">
-	            	<div className="col-sm">
-	              		<label>Contraseña: </label>
-	              		<input type="password" id="pass"/>
-	            	</div>
-
-	            	<div className="col-sm">
-	              		<label>Confirmar Contraseña: </label>
-	              		<input type="password" id="pass2"/>
+	              		<label className="registerlabel">Identidad: </label>
+	              		<input type="text" className="registerinput" id="identity"/>
 	            	</div>
 	          	</div>
 
 	          	<div className="row">
+	            	<div className="col-sm">
+	              		<label className="registerlabel">Contraseña: </label>
+	              		<input type="password" className="registerinput" id="pass"/>
+	            	</div>
 
 	            	<div className="col-sm">
-	              		<label>Telefono/Celular: </label>
-	              		<input type="text" id="number"/>
+	              		<label className="registerlabel">Confirmar Contraseña: </label>
+	              		<input type="password" className="registerinput"  id="pass2"/>
+	            	</div>
+	          	</div>
+
+	          	<div className="row">
+
+	            	<div className="col-sm">
+	              		<label className="registerlabel">Telefono/Celular: </label>
+	              		<input type="text" className="registerinput" id="number"/>
 	            	</div>
 
 	            	<div className="col-sm content">
-	              		<label>Correo electronico: </label>
-	              		<input type="e-mail" id="email"/>
+	              		<label className="registerlabel">Correo electronico: </label>
+	              		<input type="e-mail" className="registerinput" id="email"/>
 	            	</div>
 	          	</div>
 
