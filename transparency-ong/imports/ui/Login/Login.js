@@ -10,14 +10,14 @@ class Login extends React.Component {
         <div className="container centrado">
           <div className="row">
 
-            <div className="col-sm">
+            <div className="col-xl">
               <label className="tag">Usuario: </label>
               <input type="text" />
             </div>
           </div>
 
           <div className="row">
-            <div className="col-sm">
+            <div className="col-xl">
               <label className="tag">Contraseña: </label>
               <input type="password" />
             </div>
@@ -35,53 +35,53 @@ class Login extends React.Component {
 
           <div className="row">
 
-            <div className="col-sm">
-              <label>Nombres: </label>
-              <input type="text" />
+            <div className="col-xl">
+              <label className="registerlabel">Nombres: </label>
+              <input className="registerinput" type="text" />
             </div>
 
-            <div className="col-sm">
-              <label>Apellidos: </label>
-              <input type="text" />
-            </div>
-          </div>
-
-          <div className="row">
-
-            <div className="col-sm">
-              <label >Usuario: </label>
-              <input type="text" />
-            </div>
-
-            <div className="col-sm">
-              <label>Identidad: </label>
-              <input type="text" />
+            <div className="col-xl">
+              <label className="registerlabel">Apellidos: </label>
+              <input className="registerinput" type="text" />
             </div>
           </div>
 
           <div className="row">
 
-            <div className="col-sm">
-              <label>Contraseña: </label>
-              <input type="password" />
+            <div className="col-xl">
+              <label className="registerlabel">Usuario: </label>
+              <input className="registerinput" type="text" />
             </div>
 
-            <div className="col-sm">
-              <label>Confirmar Contraseña: </label>
-              <input type="password" />
+            <div className="col-xl">
+              <label className="registerlabel">Identidad: </label>
+              <input className="registerinput" type="text" />
             </div>
           </div>
 
           <div className="row">
 
-            <div className="col-sm">
-              <label>Telefono/Celular: </label>
-              <input type="text" />
+            <div className="col-xl">
+              <label className="registerlabel">Contraseña: </label>
+              <input className="registerinput" type="password" />
             </div>
 
-            <div className="col-sm content">
-              <label>Correo electronico: </label>
-              <input type="e-mail" />
+            <div className="col-xl">
+              <label className="registerlabel">Confirmar Contraseña: </label>
+              <input className="registerinput" type="password" />
+            </div>
+          </div>
+
+          <div className="row">
+
+            <div className="col-xl">
+              <label className="registerlabel">Telefono/Celular: </label>
+              <input className="registerinput" type="text" />
+            </div>
+
+            <div className="col-xl content">
+              <label className="registerlabel">Correo electronico: </label>
+              <input className="registerinput" type="e-mail" />
             </div>
           </div>
 
