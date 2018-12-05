@@ -1,3 +1,14 @@
+.registerlabel{
+    font-family: 'Roboto', sans-serif;
+    display: contents;
+    width: 80px;
+    margin-top: 20%;
+}
+.registerinput{
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 2%;
+    display: block;
+}
 .centrado{
     text-align: center;
     padding-bottom: 2%;
@@ -46,4 +57,8 @@
 }
 .content{
     margin-bottom: 3%;
+}
+.col-xl{
+    margin-top: 2%;
+    margin-left: 7%;
 }
