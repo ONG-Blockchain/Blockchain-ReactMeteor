@@ -1,41 +1,42 @@
 import React, { Component } from 'react';
+import { Carousel } from 'react-bootstrap';
 import './Home.css';
 
 class Home extends Component {
-    componentDidMount (){
-        $('.carousel').carousel({
-            interval:200
-        })
-    }
     render() {
 
         const events = (
             <div className="container">
+                <h2>Bienvenido [usuario]!!!</h2>
+                <h3>Estos son los evento activos, animate a donar: </h3>
                 <div className="row">
-                    <div className="col-xl">
+                    <div className="col-xl carousels">
 
-                        <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
-                            <div className="carousel-inner">
-                                <div className="carousel-item active">
-                                    <img className="d-block w-100" src="https://image.shutterstock.com/image-vector/keep-simple-business-concept-lightbulbs-260nw-489515029.jpg" alt="First slide" />
-                                </div>
-                                <div className="carousel-item">
-                                    <img className="d-block w-100" src="https://image.shutterstock.com/display_pic_with_logo/188833102/1016583331/stock-vector-flat-smile-icon-simple-smile-face-icon-1016583331.jpg" alt="Second slide" />
-                                </div>
-                                <div className="carousel-item">
-                                    <img className="d-block w-100" src="https://image.shutterstock.com/image-vector/keep-simple-business-concept-lightbulbs-260nw-489515029.jpg" alt="Third slide" />
-                                </div>
-                            </div>
-                            <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span className="sr-only">Previous</span>
-                            </a>
-                            <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span className="sr-only">Next</span>
-                            </a>
-                        </div>
-
+                        <Carousel>
+                            <Carousel.Item>
+                                <img  alt="900x500" src="https://image.shutterstock.com/image-vector/keep-simple-business-concept-lightbulbs-260nw-489515029.jpg" />
+                                <Carousel.Caption  className="items">
+                                    <h3>[NOMBRE DEL EVENTO]</h3>
+                                    <p>[DESCRIPCION DEL EVENTO]</p>
+                                    <button className="btn btn-secondary">Ver Mas...</button>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img  alt="900x500" src="https://image.shutterstock.com/display_pic_with_logo/188833102/1016583331/stock-vector-flat-smile-icon-simple-smile-face-icon-1016583331.jpg" />
+                                <Carousel.Caption>
+                                    <h3>Second slide label</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img  alt="900x500" src="https://image.shutterstock.com/image-vector/keep-simple-business-concept-lightbulbs-260nw-489515029.jpg" />
+                                <Carousel.Caption>
+                                    <h3>Third slide label</h3>
+                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        </Carousel>
+                    
                     </div>
                 </div>
             </div>
