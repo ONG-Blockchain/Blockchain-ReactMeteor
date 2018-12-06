@@ -1,0 +1,35 @@
+.titulo{
+    padding-top: 10%;
+    padding-left: 3%;
+    color: black;
+}
+.formulario{
+    padding-bottom: 2%;
+
+    display: block;
+    padding-left: 35%;
+    background-color: rgba(0,0,0,.5);
+}
+.contact_input1{
+	width: 158%;
+	height: 48px;
+	background: #f1f6f9;
+	border-radius: 24px;
+	padding-left: 38px;
+	border: none;
+	outline: none;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.boton{
+    margin-top: 2%;    
+    margin-bottom: 2%;
+    margin-left: -13%;
+    border-radius: 24px;
+    height: 49px;
+    width: 100px;
+}
+.centerbutton{
+    margin-left: 20%;
+    border-radius: 24px;
+}
