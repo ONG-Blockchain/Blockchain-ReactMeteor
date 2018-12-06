@@ -9,6 +9,17 @@ import Header from '../Header.js';
 import Navbar from '../Navbar/Navbar.js';
 
 class Login extends React.Component {
+  constructor(){
+    super();
+    var logged = this.logIn();
+    this.state = {
+      isLoggedIn: logged,
+    }
+  }
+  logIn(){
+    console.log(Meteor.userId());
+    return Meteor.userId() != null;
+  }
 	register(event){
 		var Profile = {
         	firstname: $("#name").val(),
@@ -28,22 +39,24 @@ class Login extends React.Component {
           		Bert.alert( 'No se pudo registrar el usuario.', 'danger', 'fixed-top', 'fa-frown-o' );
         	}else{
           		Bert.alert( 'Usuario registrado exitosamente!', 'success', 'fixed-top', 'fa-frown-o' );
+              this.setState({isLoggedIn: true})
           		FlowRouter.go('/home');
         	}
       	});
 	}
 
-	login(event){
+	login1(){
+    const self = this;
 		Meteor.loginWithPassword($("#userLogin").val(), $("#passLogin").val(), function(error){
         	if(error){
           		Bert.alert( 'El correo electrónico y/o contraseña que ha introducido son incorrectos.', 'danger', 'fixed-top', 'fa-frown-o' );
         	}else{
           		Bert.alert( 'Login Successfully!', 'success', 'fixed-top', 'fa-frown-o' );
           		FlowRouter.go('/home');
+              self.setState({isLoggedIn: true});
         	}
       	});
 	}
-
   	render() {
 
     const login = (
@@ -65,7 +78,7 @@ class Login extends React.Component {
             		</div>
           		</div>
         	</div>
-        	<button className="btn btn-secondary centrar" onClick={this.login.bind(this)}>Login</button>
+        	<button className="btn btn-secondary centrar" onClick={this.login1.bind(this)}>Login</button>
       	</div>
     );
 
@@ -133,7 +146,7 @@ class Login extends React.Component {
 	let isLoggedIn = false;
     return (
     	<div>
-    		<Navbar isLoggedIn={false}> </Navbar>
+    		<Navbar isLoggedIn={this.state.isLoggedIn}> </Navbar>
     		<div id="loginView" className="background container-fluid">
 	        	<div className="row centerVert">
 	          		<div className="col login">

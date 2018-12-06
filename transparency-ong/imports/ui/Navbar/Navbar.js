@@ -2,13 +2,32 @@ import React from 'react';
 
 import LoginControl from './LoginControl.js';
 
+function LoginButton(props) {
+  	return (
+    	<span class="navbar-text">
+      		Bienvenido!
+    	</span>
+  	);
+}
+
+function LogoutButton(props) {
+  	return (
+    	<span class="navbar-text">
+      <button class="btn btn-outline-success my-2 my-sm-0" >Cerrar Sesi&oacute;n</button>
+    </span>
+  );
+}
+
 export default class Navbar extends React.Component {
-	constructor(props) {
-	    super(props);
-	    this.state = {isLoggedIn: props.isLoggedIn};
-	}
 	render() {
-		const isLoggedIn = this.state.isLoggedIn;
+		let isLoggedIn = this.props.isLoggedIn;
+		let button;
+
+	    if (isLoggedIn) {
+	      	button = <LogoutButton onClick={this.handleLogoutClick} />;
+	    } else {
+	      	button = <LoginButton onClick={this.handleLoginClick} />;
+	    }
 		return (
 			<div>
 				<nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -26,7 +45,7 @@ export default class Navbar extends React.Component {
 								<a className="nav-link" href="#">Link</a>
 							</li>
 						</ul>
-						<LoginControl isLoggedIn={isLoggedIn}> </LoginControl>
+						{button}
 					</div>
 				</nav>
 			</div>
