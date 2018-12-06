@@ -219,7 +219,7 @@ class Login extends React.Component {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="images/realtor_1.jpg" alt=""/></div>
+									<div className="realtor_image"><img src="images/realtor_1.jpg"/></div>
 									<div className="realtor_body">
 										<div className="realtor_title">Christian E. Rodriguez</div>
 										<div className="realtor_subtitle">Senior Realtor</div>
@@ -235,7 +235,7 @@ class Login extends React.Component {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="images/realtor_2.jpg" alt=""/></div>
+									<div className="realtor_image"><img src="images/realtor_2.jpg"/></div>
 									<div className="realtor_body">
 										<div className="realtor_title">Dario O. Villalta</div>
 										<div className="realtor_subtitle">Senior Realtor</div>
@@ -251,7 +251,7 @@ class Login extends React.Component {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="images/realtor_3.jpg" alt=""/></div>
+									<div className="realtor_image"><img src="/img/jordi.jpeg"/></div>
 									<div className="realtor_body">
 										<div className="realtor_title">Jordi R. Mairena</div>
 										<div className="realtor_subtitle">Senior Realtor</div>
@@ -267,7 +267,7 @@ class Login extends React.Component {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="images/realtor_4.jpg" alt=""/></div>
+									<div className="realtor_image"><img src="/img/miguel.jpeg"/></div>
 									<div className="realtor_body">
 										<div className="realtor_title">Miguel A. Ardon</div>
 										<div className="realtor_subtitle">Senior Realtor</div>
