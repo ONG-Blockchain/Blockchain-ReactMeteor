@@ -6,7 +6,19 @@ import './Login.css';
 
 import Header from '../Header.js';
 
+import Navbar from '../Navbar/Navbar.js';
+
 class Login extends React.Component {
+  constructor(){
+    super();
+    var logged = this.logIn();
+    this.state = {
+      isLoggedIn: logged,
+    }
+  }
+  logIn(){
+    return Meteor.userId() != null;
+  }
 	register(event){
 		var Profile = {
         	firstname: $("#name").val(),
@@ -21,27 +33,36 @@ class Login extends React.Component {
 	        password: $("#pass").val(),
 	        profile: Profile
       	}
+        const self = this;
       	Accounts.createUser(User, function(err){
         	if(err){
-          		Bert.alert( 'No se pudo registrar el usuario.', 'danger', 'fixed-top', 'fa-frown-o' );
+          		Bert.alert( 'No se pudo registrar el usuario.', 'danger', 'fixed-bottom', 'fa-frown-o' );
         	}else{
-          		Bert.alert( 'Usuario registrado exitosamente!', 'success', 'fixed-top', 'fa-frown-o' );
+          		Bert.alert( 'Usuario registrado exitosamente!', 'success', 'fixed-bottom', 'fa-smile-o' );
+              self.setState({isLoggedIn: true});
           		FlowRouter.go('/home');
         	}
       	});
 	}
 
-	login(event){
+  handleLogout(){
+    this.setState({isLoggedIn: false});
+    Meteor.logout();
+    Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
+  }
+
+	login1(){
+    const self = this;
 		Meteor.loginWithPassword($("#userLogin").val(), $("#passLogin").val(), function(error){
         	if(error){
-          		Bert.alert( 'El correo electrónico y/o contraseña que ha introducido son incorrectos.', 'danger', 'fixed-top', 'fa-frown-o' );
+          		Bert.alert( 'El correo electrónico y/o contraseña que ha introducido son incorrectos.', 'danger', 'fixed-bottom', 'fa-frown-o' );
         	}else{
-          		Bert.alert( 'Login Successfully!', 'success', 'fixed-top', 'fa-frown-o' );
+          		Bert.alert( 'Login Successfully!', 'success', 'fixed-bottom', 'fa-smile-o' );
           		FlowRouter.go('/home');
+              self.setState({isLoggedIn: true});
         	}
       	});
 	}
-
   	render() {
 
     const login = (
@@ -63,7 +84,7 @@ class Login extends React.Component {
             		</div>
           		</div>
         	</div>
-        	<button className="btn btn-secondary centrar" onClick={this.login.bind(this)}>Login</button>
+        	<button className="btn btn-secondary centrar" onClick={this.login1.bind(this)}>Login</button>
       	</div>
     );
 
@@ -128,10 +149,11 @@ class Login extends React.Component {
         	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
       	</div>
     );
-
+	let isLoggedIn = false;
     return (
     	<div>
-    		<div className="background container-fluid">
+    		<Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
+    		<div id="loginView" className="background container-fluid">
 	        	<div className="row centerVert">
 	          		<div className="col login">
 	            		{login}
