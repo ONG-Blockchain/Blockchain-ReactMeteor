@@ -17,9 +17,9 @@ class EventManager extends React.Component {
                 <div className="row">
                     <input type="text" class="contact_input" placeholder="Meta" />
                 </div>
-                <div className="row">                   
-                    <input type="text" class="contact_input" placeholder="Foto" required />
-                    <button className="btn btn-dark  boton"> Buscar</button>                   
+                <div className="row">  
+                <input type="text" class="contact_input posicion"  disabled />
+                <input type="file"  className="btnbrowse" id="avatar" name="avatar" accept="image/png,image/jpeg"/>                   
                 </div>
                 <div className="row">                    
                     <input type="date" class="contact_input" required />                    
