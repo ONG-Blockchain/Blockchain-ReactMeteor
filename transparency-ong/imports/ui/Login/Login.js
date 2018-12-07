@@ -17,7 +17,6 @@ class Login extends React.Component {
     }
   }
   logIn(){
-    console.log(Meteor.userId());
     return Meteor.userId() != null;
   }
 	register(event){
@@ -34,24 +33,31 @@ class Login extends React.Component {
 	        password: $("#pass").val(),
 	        profile: Profile
       	}
+        const self = this;
       	Accounts.createUser(User, function(err){
         	if(err){
-          		Bert.alert( 'No se pudo registrar el usuario.', 'danger', 'fixed-top', 'fa-frown-o' );
+          		Bert.alert( 'No se pudo registrar el usuario.', 'danger', 'fixed-bottom', 'fa-frown-o' );
         	}else{
-          		Bert.alert( 'Usuario registrado exitosamente!', 'success', 'fixed-top', 'fa-frown-o' );
-              this.setState({isLoggedIn: true})
+          		Bert.alert( 'Usuario registrado exitosamente!', 'success', 'fixed-bottom', 'fa-smile-o' );
+              self.setState({isLoggedIn: true});
           		FlowRouter.go('/home');
         	}
       	});
 	}
 
+  handleLogout(){
+    this.setState({isLoggedIn: false});
+    Meteor.logout();
+    Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
+  }
+
 	login1(){
     const self = this;
 		Meteor.loginWithPassword($("#userLogin").val(), $("#passLogin").val(), function(error){
         	if(error){
-          		Bert.alert( 'El correo electrónico y/o contraseña que ha introducido son incorrectos.', 'danger', 'fixed-top', 'fa-frown-o' );
+          		Bert.alert( 'El correo electrónico y/o contraseña que ha introducido son incorrectos.', 'danger', 'fixed-bottom', 'fa-frown-o' );
         	}else{
-          		Bert.alert( 'Login Successfully!', 'success', 'fixed-top', 'fa-frown-o' );
+          		Bert.alert( 'Login Successfully!', 'success', 'fixed-bottom', 'fa-smile-o' );
           		FlowRouter.go('/home');
               self.setState({isLoggedIn: true});
         	}
@@ -146,7 +152,7 @@ class Login extends React.Component {
 	let isLoggedIn = false;
     return (
     	<div>
-    		<Navbar isLoggedIn={this.state.isLoggedIn}> </Navbar>
+    		<Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
     		<div id="loginView" className="background container-fluid">
 	        	<div className="row centerVert">
 	          		<div className="col login">
