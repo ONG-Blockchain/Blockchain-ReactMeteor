@@ -6,7 +6,10 @@ import './Login.css';
 
 import Header from '../Header.js';
 
-class Login extends React.Component {
+import {Images, EventsImages} from '../../api/Image.js';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
+
+class Login extends TrackerReact(React.Component) {
 	register(event){
 		var Profile = {
         	firstname: $("#name").val(),
@@ -41,6 +44,44 @@ class Login extends React.Component {
         	}
       	});
 	}
+
+  handleChange(){
+    console.log('ggg');
+    $("#imageUp:file").change(function () {
+      console.log('2222');
+      var filename = $(this).val();
+      $("#filename").text(filename);
+      $("#labelImg").hide();
+    });
+  }
+
+  submitImg(){
+    var file = $("#imageUp").get(0).files[0];
+    console.log(EventsImages.findOne({eventId: 1}));
+    /*if(file){
+      console.log('entro');
+      var fsFile = new FS.File(file);
+
+      console.log(Images.find().fetch())
+      Images.insert(fsFile, function(err, result) {
+        if(err){
+          console.log(err);
+        } else{
+          var imageLoc = '/cfs/files/Images/'+result._id;
+
+          EventsImages.insert({
+            eventId: 1,
+            image: imageLoc
+          });
+          Bert.alert( 'Successfully!', 'success', 'fixed-bottom', 'fa-frown-o' );
+        }
+      });
+    }*/
+  }
+
+  imageUrl(){
+    return EventsImages.find().fetch();
+  }
 
   	render() {
 
@@ -129,6 +170,13 @@ class Login extends React.Component {
       	</div>
     );
 
+    let image = this.imageUrl();
+    console.log(image);
+    //let imageUrl = "";
+    if(image.length>0)
+      image = image[0].image;
+    console.log(image);
+
     return (
     	<div>
     		<div className="background container-fluid">
@@ -156,7 +204,7 @@ class Login extends React.Component {
 						</div>
 
 						<div className="col-lg-6">
-							<div className="about_image"><img src="images/about_image.jpg" alt=""/></div>
+							<div className="about_image"><img src={image} alt=""/></div>
 						</div>
 					</div>
 					<div className="row milestones_row">
@@ -283,6 +331,14 @@ class Login extends React.Component {
 					</div>
 				</div>
 			</div>
+
+      <form>
+        <label id="labelImg"> Choose image </label>
+        <input type="file" id="imageUp" onChange={this.handleChange}/>
+        <span id="filename"></span>
+        <br/>
+        <button type="button" value="Upload" id="butImageUp" className="btn btn-secondary" onClick={this.submitImg}>Upload </button>
+      </form>
 
 			<div className="newsletter">
 				<div className="parallaxCust"></div>
