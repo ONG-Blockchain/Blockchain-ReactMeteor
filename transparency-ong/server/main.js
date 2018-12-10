@@ -30,3 +30,14 @@ EventsImages.allow({
 		return true;
 	}
 });
+
+export const Events = new Mongo.Collection("Events");
+
+Events.allow({
+	insert: function(){
+		return true;
+	},
+	update: function(userId, doc, fields, modifier){
+		return true;
+	}
+});

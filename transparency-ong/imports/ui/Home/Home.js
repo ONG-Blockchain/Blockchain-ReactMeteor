@@ -5,6 +5,34 @@ import './Home.css';
 
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Navbar from '../Navbar/Navbar.js';
+import {Events} from '../../api/Events.js';
+import {EventsImages} from '../../api/Image.js';
+
+function getImageUrl (evento) {
+    if(EventsImages.findOne({"eventId": evento.Id}))
+        return EventsImages.findOne({"eventId": evento.Id}).image;
+    return;
+}
+
+const MyCarousel2 = ({ eventos }) => (
+    <div className="root">
+        <Carousel className="carousel">
+            {eventos.map((evento, i) =>
+                <Carousel.Item key={i} className="carouselItem">
+                    <a className="thumbnail" href="javascript:void(0)">
+                        <img  alt="900x500" className="carouselItemImg" src={getImageUrl(evento)}/>
+                        <Carousel.Caption  className="items">
+                            <div className="cuadroNegro">
+                                <h3>{evento.Nombre}</h3>
+                                <p>{evento.Descripcion}</p>
+                                <button className="btn btn-secondary">Ver Mas...</button>
+                            </div>
+                        </Carousel.Caption>
+                    </a>
+                </Carousel.Item>)}
+        </Carousel>
+    </div>
+)
 
 class Home extends TrackerReact(Component) {
     constructor(){
@@ -20,7 +48,11 @@ class Home extends TrackerReact(Component) {
     handleLogout(){
         this.setState({isLoggedIn: false});
         Meteor.logout();
+        FlowRouter.go('/');
         Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
+    }
+    events(){
+        return Events.find().fetch();
     }
     render() {
         let nombre;
@@ -38,30 +70,7 @@ class Home extends TrackerReact(Component) {
                     <div className="row">
                         <div className="col-xl carousel">
 
-                            <Carousel className="carousel">
-                                <Carousel.Item className="carouselItem">
-                                    <img  alt="900x500" className="carouselItemImg" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/04/26/14/fix-facebook.jpg?w968"/>
-                                    <Carousel.Caption  className="items">
-                                        <h3>[NOMBRE DEL EVENTO]</h3>
-                                        <p>[DESCRIPCION DEL EVENTO]</p>
-                                        <button className="btn btn-secondary">Ver Mas...</button>
-                                    </Carousel.Caption>
-                                </Carousel.Item>
-                                <Carousel.Item className="carouselItem">
-                                    <img  alt="900x500" className="carouselItemImg" src="https://www.betootaadvocate.com/wp-content/uploads/2016/10/stock-photo-model.jpg" />
-                                    <Carousel.Caption className="items">
-                                        <h3>Second slide label</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    </Carousel.Caption>
-                                </Carousel.Item>
-                                <Carousel.Item className="carouselItem">
-                                    <img  alt="900x500" className="carouselItemImg" src="https://i.kym-cdn.com/photos/images/newsfeed/001/331/500/b16.jpg" />
-                                    <Carousel.Caption className="items">
-                                        <h3>Third slide label</h3>
-                                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                    </Carousel.Caption>
-                                </Carousel.Item>
-                            </Carousel>
+                            <MyCarousel2 eventos={this.events()} />
                         
                         </div>
                     </div>
