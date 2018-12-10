@@ -148,7 +148,7 @@ class Login extends React.Component {
 						<div className="col-lg-6">
 							<div className="about_content">
 								<div className="section_title">Sobre Nosotros</div>
-								<div className="section_subtitle">Transparencia obligación de todos</div>
+								<div className="section_subtitle">Transparencia por un mejor mañana</div>
 								<div className="about_text">
 									<p>Somos una ONG en Tegucigalpa,Honduras. Nos dedicamos a ayudar a quien mas lo necesite con el objetivo de mostrar transparencia a quienes realizan donaciones. Nuestra plataforma es 100% transparente en sus eventos, mostrandole a las personas en que se utiliza la recaudación lograda. </p>
 								</div>
@@ -219,10 +219,10 @@ class Login extends React.Component {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="images/realtor_1.jpg"/></div>
+									<div className="realtor_image"><img src="img/christian.jpeg"/></div>
 									<div className="realtor_body">
 										<div className="realtor_title">Christian E. Rodriguez</div>
-										<div className="realtor_subtitle">Senior Realtor</div>
+										<div className="realtor_subtitle">CMO</div>
 									</div>
 									<div className="realtor_link"><a href="#">+</a></div>
 								</div>
@@ -238,7 +238,7 @@ class Login extends React.Component {
 									<div className="realtor_image"><img src="/img/dario.jpeg"/></div>
 									<div className="realtor_body">
 										<div className="realtor_title">Dario O. Villalta</div>
-										<div className="realtor_subtitle">Senior Realtor</div>
+										<div className="realtor_subtitle">CEO </div>
 									</div>
 									<div className="realtor_link"><a href="#">+</a></div>
 								</div>
@@ -254,7 +254,7 @@ class Login extends React.Component {
 									<div className="realtor_image"><img src="/img/jordi.jpeg"/></div>
 									<div className="realtor_body">
 										<div className="realtor_title">Jordi R. Mairena</div>
-										<div className="realtor_subtitle">Senior Realtor</div>
+										<div className="realtor_subtitle">CTO</div>
 									</div>
 									<div className="realtor_link"><a href="#">+</a></div>
 								</div>
@@ -270,7 +270,7 @@ class Login extends React.Component {
 									<div className="realtor_image"><img src="/img/miguel.jpeg"/></div>
 									<div className="realtor_body">
 										<div className="realtor_title">Miguel A. Ardon</div>
-										<div className="realtor_subtitle">Senior Realtor</div>
+										<div className="realtor_subtitle">CISO</div>
 									</div>
 									<div className="realtor_link"><a href="#">+</a></div>
 								</div>
@@ -293,7 +293,7 @@ class Login extends React.Component {
 								<div className="newsletter_content d-flex flex-lg-row flex-column align-items-start justify-content-start">
 									<div className="newsletter_title_container">
 										<div className="newsletter_title">Deseas mantenerte informado?</div>
-										<div className="newsletter_subtitle">Transparencia obligacion de todos</div>
+										<div className="newsletter_subtitle">Transparencia por un mejor mañana</div>
 									</div>
 									<div className="newsletter_form_container">
 										<form action="#" className="newsletter_form">
