@@ -31,7 +31,6 @@ class Home extends TrackerReact(Component) {
             <div>
                 <Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
                 <div className="container">
-                    <br/><br/><br/><br/><br/>
                     <h2 className="zindex">Bienvenido {nombre}!!!</h2>
                     <h3 className="zindex">Estos son los evento activos, animate a donar: </h3>
                     <div className="row">
