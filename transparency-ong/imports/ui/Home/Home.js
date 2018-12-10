@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-bootstrap';
 import './Home.css';
+//import './bootstrap-3_3_7-min.css';
 
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Navbar from '../Navbar/Navbar.js';
@@ -31,10 +32,11 @@ class Home extends TrackerReact(Component) {
             <div>
                 <Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
                 <div className="container">
+                    <br/><br/><br/><br/><br/><br/><br/>
                     <h2 className="zindex">Bienvenido {nombre}!!!</h2>
                     <h3 className="zindex">Estos son los evento activos, animate a donar: </h3>
                     <div className="row">
-                        <div className="col-xl carousels">
+                        <div className="col-xl carousel">
 
                             <Carousel className="carousel">
                                 <Carousel.Item className="carouselItem">
