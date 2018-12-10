@@ -2,35 +2,41 @@ import React, { Component } from 'react';
 import { Carousel } from 'react-bootstrap';
 import './Home.css';
 
-class Home extends Component {
-    render() {
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-        const events = (
+class Home extends TrackerReact(Component) {
+    render() {
+        let nombre;
+        if(Meteor.user() != null)
+            nombre = Meteor.user().profile.firstname + ' ' + Meteor.user().profile.lastname;
+        else
+            nombre = '';
+        return (
             <div className="container">
-                <h2>Bienvenido [usuario]!!!</h2>
-                <h3>Estos son los evento activos, animate a donar: </h3>
+                <h2 className="zindex">Bienvenido {nombre}!!!</h2>
+                <h3 className="zindex">Estos son los evento activos, animate a donar: </h3>
                 <div className="row">
                     <div className="col-xl carousels">
 
-                        <Carousel>
-                            <Carousel.Item>
-                                <img  alt="900x500" src="https://image.shutterstock.com/image-vector/keep-simple-business-concept-lightbulbs-260nw-489515029.jpg" />
+                        <Carousel className="carousel">
+                            <Carousel.Item className="carouselItem">
+                                <img  alt="900x500" className="carouselItemImg" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/04/26/14/fix-facebook.jpg?w968"/>
                                 <Carousel.Caption  className="items">
                                     <h3>[NOMBRE DEL EVENTO]</h3>
                                     <p>[DESCRIPCION DEL EVENTO]</p>
                                     <button className="btn btn-secondary">Ver Mas...</button>
                                 </Carousel.Caption>
                             </Carousel.Item>
-                            <Carousel.Item>
-                                <img  alt="900x500" src="https://image.shutterstock.com/display_pic_with_logo/188833102/1016583331/stock-vector-flat-smile-icon-simple-smile-face-icon-1016583331.jpg" />
-                                <Carousel.Caption>
+                            <Carousel.Item className="carouselItem">
+                                <img  alt="900x500" className="carouselItemImg" src="https://www.betootaadvocate.com/wp-content/uploads/2016/10/stock-photo-model.jpg" />
+                                <Carousel.Caption className="items">
                                     <h3>Second slide label</h3>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
-                            <Carousel.Item>
-                                <img  alt="900x500" src="https://image.shutterstock.com/image-vector/keep-simple-business-concept-lightbulbs-260nw-489515029.jpg" />
-                                <Carousel.Caption>
+                            <Carousel.Item className="carouselItem">
+                                <img  alt="900x500" className="carouselItemImg" src="https://i.kym-cdn.com/photos/images/newsfeed/001/331/500/b16.jpg" />
+                                <Carousel.Caption className="items">
                                     <h3>Third slide label</h3>
                                     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                                 </Carousel.Caption>
@@ -39,11 +45,6 @@ class Home extends Component {
                     
                     </div>
                 </div>
-            </div>
-        );
-        return (
-            <div>
-                {events}
             </div>
         )
 
