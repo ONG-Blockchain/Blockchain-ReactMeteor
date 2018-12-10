@@ -23,4 +23,6 @@ kadira:flow-router
 accounts-password
 themeteorchef:bert
 meteortoys:allthings
+cfs:standard-packages
+cfs:gridfs
 ultimatejs:tracker-react
