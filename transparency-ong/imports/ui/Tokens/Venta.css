@@ -1,0 +1,65 @@
+.container{
+    text-align: center;
+    margin-top: 5%;
+    padding: 3%;
+}
+
+.contGeneral{
+    background-color: rgba(34, 34, 34, 0.7);
+}
+
+.contItem{
+    padding: 3%;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.imgsize{
+    height: 100%;
+    width: 70%;
+}
+
+.information{
+    padding: 4%;
+    text-align: left;
+}
+
+.counter{
+    padding-top: 10%;
+}
+
+.counter label{
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.counter button{
+    width: 20%;
+    height: 40%;
+    font-size: 160%;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+.final{
+    padding-left: 37%;
+}
+
+.final button{
+    margin-left: 50%;
+}
+
+.final label{
+    text-align: left;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.modalVisible {
+    opacity: 1 !important;
+    height: 100%;
+    margin-top: 50px;
+}
+
+.modalNotVisible {
+    opacity: 0;
+}
