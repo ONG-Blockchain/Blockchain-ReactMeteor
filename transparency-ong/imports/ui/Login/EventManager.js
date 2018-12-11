@@ -3,8 +3,8 @@ import './EventManager.css';
 import './contact.css';
 import './contact_responsive.css';
 
-import {Events} from '../../api/Events.js';
-import {Images, EventsImages} from '../../api/Image.js';
+import { Events } from '../../api/Events.js';
+import { Images, EventsImages } from '../../api/Image.js';
 
 class EventManager extends React.Component {
 
@@ -26,22 +26,22 @@ class EventManager extends React.Component {
         console.log(descripcion);
 
         var file;
-        if($("#imageUp").get(0) != undefined)
+        if ($("#imageUp").get(0) != undefined)
             var file = $("#imageUp").get(0).files[0];
 
-        if(nombre.length > 0) {
-            if(meta.length > 0) {
-                if(!isNaN(meta)) {
-                    if(fechaFinal.length > 0) {
-                        if(descripcion.length > 0) {
+        if (nombre.length > 0) {
+            if (meta.length > 0) {
+                if (!isNaN(meta)) {
+                    if (fechaFinal.length > 0) {
+                        if (descripcion.length > 0) {
                             console.log(file);
-                            if(file) {
+                            if (file) {
                                 var idNewEvent = Events.find().fetch().length + 1;
                                 var fsFile = new FS.File(file);
-                                Images.insert(fsFile, function(err, result) {
-                                    if(err){
+                                Images.insert(fsFile, function (err, result) {
+                                    if (err) {
                                         console.log(err);
-                                    } else{
+                                    } else {
                                         console.log(Events.find().fetch());
                                         console.log('idNewEvent = '+idNewEvent );
                                         var imageLoc = '/cfs/files/Images/'+result._id;
@@ -57,28 +57,28 @@ class EventManager extends React.Component {
                                             FechaFinal: fechaFinal,
                                             Descripcion: descripcion
                                         });
-                                        Bert.alert( 'Successfully!', 'success', 'fixed-bottom', 'fa-frown-o' );
+                                        Bert.alert('Successfully!', 'success', 'fixed-bottom', 'fa-frown-o');
                                     }
                                 });
-                            } else 
-                                Bert.alert( 'Error\nSeleccione una imagen.', 'danger', 'fixed-bottom', 'fa-frown-o' );
-                        } else 
-                            Bert.alert( 'Error\nIngrese una descripción.', 'danger', 'fixed-bottom', 'fa-frown-o' );
-                    } else 
-                        Bert.alert( 'Error\nIngrese una fecha final.', 'danger', 'fixed-bottom', 'fa-frown-o' );
-                } else 
-                    Bert.alert( 'Error\nIngrese un número válido para la meta.', 'danger', 'fixed-bottom', 'fa-frown-o' );
-            } else 
-                Bert.alert( 'Error\nIngrese una meta.', 'danger', 'fixed-bottom', 'fa-frown-o' );
-        } else 
-            Bert.alert( 'Error\nIngrese un nombre.', 'danger', 'fixed-bottom', 'fa-frown-o' );
+                            } else
+                                Bert.alert('Error\nSeleccione una imagen.', 'danger', 'fixed-bottom', 'fa-frown-o');
+                        } else
+                            Bert.alert('Error\nIngrese una descripción.', 'danger', 'fixed-bottom', 'fa-frown-o');
+                    } else
+                        Bert.alert('Error\nIngrese una fecha final.', 'danger', 'fixed-bottom', 'fa-frown-o');
+                } else
+                    Bert.alert('Error\nIngrese un número válido para la meta.', 'danger', 'fixed-bottom', 'fa-frown-o');
+            } else
+                Bert.alert('Error\nIngrese una meta.', 'danger', 'fixed-bottom', 'fa-frown-o');
+        } else
+            Bert.alert('Error\nIngrese un nombre.', 'danger', 'fixed-bottom', 'fa-frown-o');
     }
 
     render() {
         const CreateEvent = (
             <div className="formulario">
                 <h1 className="titulo">Crear Evento</h1>
-                <div>                
+                <div>
                     <div className="row">
                         <div>
                             <input type="text" className="contact_input1" id="titulo" placeholder="Titulo" required />
@@ -88,11 +88,11 @@ class EventManager extends React.Component {
                         <input type="text" className="contact_input" id="meta" placeholder="Meta" />
                     </div>
                     <div className="row">
-                        <input type="file"  className="contact_input posicion inputfile" id="fileEvent" name="fileEvent" accept="image/png,image/jpeg" onChange={this.changeLabel.bind(this)}/>
+                        <input type="file" className="contact_input posicion inputfile" id="fileEvent" name="fileEvent" accept="image/png,image/jpeg" onChange={this.changeLabel.bind(this)} />
                         <label htmlFor="fileEvent" id="fileEventLabel" className="contact_input centerLabelVerText">Elegir archivo</label>
                     </div>
-                    <div className="row">                    
-                        <input type="date" className="contact_input" id="fechaFinal" required />                    
+                    <div className="row">
+                        <input type="date" className="contact_input" id="fechaFinal" required />
                     </div>
                     <div className="row">
                         <textarea className="contact_textarea contact_input" id="descripcion" placeholder="Descripcion" required></textarea>
@@ -102,8 +102,10 @@ class EventManager extends React.Component {
             </div>
         );
         return (
-            <div className="container">
-                {CreateEvent}
+            <div className="fondo">
+                <div className="container">
+                    {CreateEvent}
+                </div>
             </div>)
     }
 }
