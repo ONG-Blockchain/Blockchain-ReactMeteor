@@ -104,3 +104,6 @@
     padding-bottom: 2%;
 	padding-left: 4%;
 }
+.about_text p{
+    text-align: justify;
+}
