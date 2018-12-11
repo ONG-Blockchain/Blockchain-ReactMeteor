@@ -9,6 +9,7 @@
     font-family: 'Roboto', sans-serif;
     margin-bottom: 2%;
     display: block;
+    width: 100px;
 }
 
 .centrado{
@@ -22,10 +23,16 @@
 
 }
 .tag{
-    //font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: block;
     width: 80px;
     margin-left: 32%;
+} 
+.tag1{
+    font-family: 'Roboto', sans-serif;
+    display: unset;
+    width: 60px;
+    padding-left: 20px;
 } 
 .registertitle{
     text-align: center;
@@ -61,6 +68,9 @@
     justify-content: center;
 }
 .container2{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    
     color: black;
     background-color: rgba(240, 240, 240, 0.5);   
 }
@@ -70,4 +80,30 @@
 .col-xl{
     margin-top: 2%;
     margin-left: 7%;
+}
+.newsletter_input2{
+	width: 40%;
+	height: 40%;
+	border-radius: 36px;
+	background: #FFFFFF;
+	border: none;
+    outline: none;
+    padding-top: 2%;
+    padding-bottom: 2%;
+	padding-left: 4%;
+}
+.newsletter_input1{
+    margin-left: 7%;
+	width: 80%;
+	height: 50%;
+	border-radius: 36px;
+	background: #FFFFFF;
+	border: none;
+    outline: none;
+    padding-top: 2%;
+    padding-bottom: 2%;
+	padding-left: 4%;
+}
+.about_text p{
+    text-align: justify;
 }
