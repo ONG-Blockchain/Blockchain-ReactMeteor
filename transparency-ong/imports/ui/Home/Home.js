@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-bootstrap';
 import './Home.css';
-//import './bootstrap-3_3_7-min.css';
 
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Navbar from '../Navbar/Navbar.js';

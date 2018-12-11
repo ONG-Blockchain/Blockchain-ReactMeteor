@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.2.0",
+    "animejs": "^2.2.0",
     "meteor-node-stubs": "^0.4.1",
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
+    "react-bootstrap4-modal": "^1.7.0",
     "react-dom": "^16.6.3",
     "react-mounter": "^1.2.0"
   },
