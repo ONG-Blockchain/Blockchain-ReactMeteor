@@ -156,7 +156,7 @@ class Login extends React.Component {
 						</div>
 
 						<div className="col-lg-6">
-							<div className="about_image"><img src="images/about_image.jpg" alt=""/></div>
+							<div className="about_image"><img src="/img/intercambio.png" alt=""/></div>
 						</div>
 					</div>
 					<div className="row milestones_row">
