@@ -6,6 +6,7 @@ import {MainLayout} from '../imports/ui/MainLayout/MainLayout.js';
 import Login from '../imports/ui/Login/Login.js';
 import EventManager from '../imports/ui/Login/EventManager.js';
 import VerEvento from '../imports/ui/Login/VerEvento.js';
+import Home from '../imports/ui/Home/Home.js';
 
 var adminRoutes = FlowRouter.group({
 	triggersEnter: [function(context, redirect){
@@ -31,5 +32,12 @@ adminRoutes.route('/verevento', {
 		mount(MainLayout, {
 			content: (<VerEvento/>)
 		})
+  }
+});
+adminRoutes.route('/home', {
+	action(){
+		mount(MainLayout, {
+			content: (<Home/>)
+    })
 	}
 });
