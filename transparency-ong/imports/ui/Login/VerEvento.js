@@ -1,15 +1,18 @@
 import React from 'react';
 import './VerEvento.css';
-import '../Header.js';
+import Header from '../Header.js';
 
 class VerEvento extends React.Component {
     render() {
         const evento = (
             <div className="container contenedor">
+                <br/>
                 <h1 className="TituloVerEvento">[Nombre Evento]</h1>
+                <br/>
                 <div>
                     <img src="" width="100%" height="480px" alt="Foto del evento" />
                 </div>
+                <br/>
                 <div className="row">
                     <h2 className="titulodescripcion">Descripcion del Evento:</h2>
                 </div>
@@ -40,7 +43,8 @@ class VerEvento extends React.Component {
         );
 
         return (
-            <div >
+            <div>
+                <Header>Eventos</Header>
                 {evento}
             </div>
         )
