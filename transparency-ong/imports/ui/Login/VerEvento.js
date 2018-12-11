@@ -18,8 +18,16 @@ class VerEvento extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col alineamiento">
-                        <label className="titulodescripcion">Total a recaudar: </label>
-                        <label className="titulodescripcion pad">[Total a recaudar del evento]</label>
+                        <label className="titulodescripcion">Total Recaudado: $</label>
+                        <label className="titulodescripcion pad">[0.00]</label>
+                        </div>
+                </div>
+                <div className="row">
+                    <div className="col alineamiento">
+                        <label className="titulodescripcion">Total a Recaudar: $</label>
+                        <label className="titulodescripcion pad">[0.00]</label>
+                        <label className="fechadeexp" >Evento Hasta: </label>
+                        <label> 00/00/0000</label>
                         </div>
                 </div>
                 <div className="row">
