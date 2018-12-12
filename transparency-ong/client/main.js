@@ -27,7 +27,7 @@ adminRoutes.route('/editeventos', {
 		})
 	}
 });
-adminRoutes.route('/verevento', {
+adminRoutes.route('/verevento/:eventoId', {
 	action() {
 		mount(MainLayout, {
 			content: (<VerEvento/>)

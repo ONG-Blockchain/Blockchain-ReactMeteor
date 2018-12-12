@@ -25,7 +25,7 @@ const MyCarousel2 = ({ eventos }) => (
                             <div className="cuadroNegro">
                                 <h3>{evento.Nombre}</h3>
                                 <p>{evento.Descripcion}</p>
-                                <button className="btn btn-secondary">Ver Mas...</button>
+                                <a href={"/verevento/" + evento.Id}><button className="btn btn-secondary">Ver Mas...</button></a>
                             </div>
                         </Carousel.Caption>
                     </a>
