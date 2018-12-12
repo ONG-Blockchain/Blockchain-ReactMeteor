@@ -42,3 +42,14 @@ Events.allow({
 		return true;
 	}
 });
+
+export const Factura = new Mongo.Collection("Factura");
+
+Factura.allow({
+	insert: function(){
+		return true;
+	},
+	update: function(userId, doc, fields, modifier){
+		return true;
+	}
+});

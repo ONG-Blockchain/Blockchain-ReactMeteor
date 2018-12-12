@@ -1,0 +1,1 @@
+export const Factura = new Mongo.Collection("Factura");
