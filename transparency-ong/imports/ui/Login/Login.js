@@ -8,7 +8,9 @@ import Header from '../Header.js';
 
 import Navbar from '../Navbar/Navbar.js';
 
-class Login extends React.Component {
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
+
+class Login extends TrackerReact(React.Component) {
   constructor(){
     super();
     var logged = this.logIn();
@@ -63,6 +65,10 @@ class Login extends React.Component {
         	}
       	});
 	}
+
+  goHome(){
+    FlowRouter.go('/home');
+  }
   	render() {
 
     const login = (
@@ -149,19 +155,25 @@ class Login extends React.Component {
         	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
       	</div>
     );
-	let isLoggedIn = false;
+	let loggedIn = this.state.isLoggedIn;
     return (
     	<div>
     		<Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
     		<div id="loginView" className="background container-fluid">
-	        	<div className="row centerVert">
-	          		<div className="col login">
-	            		{login}
-	          		</div>
-	          		<div className="col register">
-	            		{register}
-	          		</div>
-	        	</div>
+            { loggedIn ? (
+              <div className="row centerVert">
+                <button className="newsletter_button2" onClick={this.goHome}>Ver Eventos</button>
+              </div>
+            ) : (
+              <div className="row centerVert">
+                <div className="col login">
+                  {login}
+                </div>
+                <div className="col register">
+                  {register}
+                </div>
+              </div>
+            )}
 	      	</div>
 			<div className="about">
 				<div className="container">
@@ -172,7 +184,7 @@ class Login extends React.Component {
 								<div className="section_title">Sobre Nosotros</div>
 								<div className="section_subtitle">Transparencia por un mejor mañana</div>
 								<div className="about_text">
-									<p>Somos una ONG en Tegucigalpa,Honduras. Nos dedicamos a ayudar a quien mas lo necesite con el objetivo de mostrar transparencia a quienes realizan donaciones. Nuestra plataforma es 100% transparente en sus eventos, mostrandole a las personas en que se utiliza la recaudación lograda. </p>
+									<p>Somos una ONG en Tegucigalpa, Honduras. Nos dedicamos a ayudar a quien m&aacute;s lo necesite con el objetivo de mostrar transparencia a quienes realizan donaciones. Nuestra plataforma es 100% transparente en sus eventos, mostrandole a las personas en que se utiliza la recaudación lograda. </p>
 								</div>
 							</div>
 						</div>

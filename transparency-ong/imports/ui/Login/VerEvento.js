@@ -2,50 +2,86 @@ import React from 'react';
 import './VerEvento.css';
 import Header from '../Header.js';
 
-class VerEvento extends React.Component {
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import {Events} from '../../api/Events.js';
+import {EventsImages} from '../../api/Image.js';
+import Navbar from '../Navbar/Navbar.js';
+
+class VerEvento extends TrackerReact(React.Component) {
+    constructor(){
+        super();
+        var logged = this.logIn();
+        this.state = {
+            isLoggedIn: logged,
+        }
+    }
+    logIn(){
+        return Meteor.userId() != null;
+    }
+    handleLogout(){
+        this.setState({isLoggedIn: false});
+        Meteor.logout();
+        FlowRouter.go('/');
+        Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
+    }
+    
     render() {
-        const evento = (
-            <div className="container contenedor">
-                <br/>
-                <h1 className="TituloVerEvento">[Nombre Evento]</h1>
-                <br/>
+        let eventoId = FlowRouter.getParam("eventoId");
+        eventoId = parseInt(eventoId);
+        let eventoObj = Events.findOne({Id: eventoId});
+        let imageUrl = '';
+        if(EventsImages.findOne({"eventId": eventoId}))
+            imageUrl = EventsImages.findOne({"eventId": eventoId}).image;
+        if(eventoObj != undefined){
+            return (
                 <div>
-                    <img src="" width="100%" height="480px" alt="Foto del evento" />
-                </div>
-                <br/>
-                <div className="row">
-                    <h2 className="titulodescripcion">Descripcion del Evento:</h2>
-                </div>
-                <div className="row">
-                    <label className="descripciondeevento">[Descripcion del Evento]</label>
-                </div>
-                <div className="row">
-                    <div className="col alineamiento">
-                        <label className="titulodescripcion">Total Recaudado: $</label>
-                        <label className="titulodescripcion pad">[0.00]</label>
+                    <Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
+                    <Header>Eventos</Header>
+                    <div className="container contenedor">
+                        <br/>
+                        <h1 className="TituloVerEvento">{eventoObj.Nombre}</h1>
+                        <br/>
+                        <div>
+                            <img src={imageUrl} width="100%" height="auto" alt="Foto del evento" />
                         </div>
-                </div>
-                <div className="row">
-                    <div className="col alineamiento">
-                        <label className="titulodescripcion">Total a Recaudar: $</label>
-                        <label className="titulodescripcion pad">[0.00]</label>
-                        <label className="fechadeexp" >Evento Hasta: </label>
-                        <label> 00/00/0000</label>
+                        <br/>
+                        <hr/>
+                        <div className="row">
+                            <h2 className="titulodescripcion">Descripci&oacute;n del Evento:</h2>
                         </div>
-                </div>
-                <div className="row">
-                    <div className="col centrarbotones">
-                        <button className="btn btn-secondary "> Realizar Donacion</button>
-                        <button className="btn btn-dark"> Ver Facturas</button>
+                        <br/>
+                        <div className="row container addPadding">
+                            <label className="descripciondeevento">{eventoObj.Descripcion}</label>
+                        </div>
+                        <br/>
+                        <hr/>
+                        <div className="row">
+                            <div className="col alineamiento">
+                                <label className="titulodescripcion">Total Recaudado: $</label>
+                                <label className="titulodescripcion pad">[0.00]</label>
+                                </div>
+                        </div>
+                        <div className="row">
+                            <div className="col alineamiento">
+                                <label className="titulodescripcion">Total a Recaudar: $</label>
+                                <label className="titulodescripcion pad">[0.00]</label>
+                                <label className="fechadeexp" >Evento Hasta: </label>
+                                <label> {eventoObj.FechaFinal}</label>
+                                </div>
+                        </div>
+                        <hr/>
+                        <div className="row">
+                            <div className="col centrarbotones">
+                                <button className="btn btn-secondary "> Realizar Donacion</button>
+                                <button className="btn btn-dark"> Ver Facturas</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
-
+            )
+        } else
         return (
             <div>
-                <Header>Eventos</Header>
-                {evento}
             </div>
         )
     };

@@ -107,3 +107,25 @@
 .about_text p{
     text-align: justify;
 }
+.navbar-brand:hover{
+    cursor: pointer;
+}
+.newsletter_button2
+{
+    width: 193px;
+    height: 72px;
+    color: #FFFFFF;
+    border-radius: 36px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #487fee, #32fa95);
+}
+.newsletter_button2:active
+{
+    outline: none;
+    border: none;
+}
