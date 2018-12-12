@@ -58,8 +58,13 @@
     opacity: 1 !important;
     height: 100%;
     margin-top: 50px;
+    padding-top: 100px;
 }
 
 .modalNotVisible {
     opacity: 0;
+}
+
+.card{
+    width: 100%;
 }

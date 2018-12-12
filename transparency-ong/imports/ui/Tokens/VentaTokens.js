@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, OverlayTrigger, Popover, Tooltip } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 import './Venta.css';
 
@@ -39,19 +39,13 @@ export default class VentaTokens extends React.Component {
         });
     }
 
-    handleClose(){
+    handleClose() {
         this.setState({
             show: false
         })
     }
 
     render() {
-        const popover = (
-            <Popover id="modal-popover" title="popover">
-              very popover. such engagement
-            </Popover>
-          );
-          const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
         const market = (
             <div>
                 <div className="container contGeneral">
@@ -82,54 +76,49 @@ export default class VentaTokens extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div>
                 <Modal className={this.state.show ? 'modalVisible' : 'modalNotVisible'} show={this.state.show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Header>
+                        <Modal.Title>Forma de Pago.</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <h4>Text in a modal</h4>
-                        <p>
-                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </p>
+                        <h4>Para poder realizar la compra de nuestro Tokens es necesario ingresar su tarjeta de credito o debito.</h4>
+                        <p>Tarjetas Validas:MasterCard, AMEX, VISA</p>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col">
+                                    <img src="http://www.vectorific.com/images/previews/2009-09-24-creditcard_BIG.gif" alt="card_image" className="card"/>
+                                </div>
+                                <div className="col">
+                                    <div className="row">
+                                        <div className="col">
+                                            <label>Numero de tarjeta:</label>
+                                            <input type="text"/>
+                                        </div>
+                                        <div className="col">
+                                            <label>Tarjeta Habiente</label>
+                                            <input type="text"/>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col">
+                                            <label>Fecha Vencimiento</label>
+                                            <input type="text"/>
+                                        </div>
 
-                        <h4>Popover in a modal</h4>
-                        <p>
-                            there is a{' '}
-                            <OverlayTrigger overlay={popover}>
-                                <a href="#popover">popover</a>
-                            </OverlayTrigger>{' '}
-                            here
-            </p>
+                                        <div className="col">
+                                            <label>CVC</label>
+                                            <input type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <h4>Tooltips in a modal</h4>
-                        <p>
-                            there is a{' '}
-                            <OverlayTrigger overlay={tooltip}>
-                                <a href="#tooltip">tooltip</a>
-                            </OverlayTrigger>{' '}
-                            here
-            </p>
-
-                        <hr />
-
-                        <h4>Overflowing text to show scroll behavior</h4>
-                        <p>
-                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-                            ac consectetur ac, vestibulum at eros.
-            </p>
-                        <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur
-                            et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-                            auctor.
-            </p>
+                            </div>
+                        </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={this.handleClose.bind(this)}>Close</Button>
+                        <Button className="btn btn-danger"onClick={this.handleClose.bind(this)}>Cancelar.</Button>
                     </Modal.Footer>
                 </Modal>
-            </div>
             </div>
         )
         return (
