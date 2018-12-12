@@ -287,6 +287,7 @@ loop();
       	});
 	}
   showAnimation(){
+    $("#modalFade").css("visibility", "visible");
     $("#canvas").css("visibility", "visible");
     var paths = [
       {id: '#path5419', d: 'm 574.27172,479 0,-15.65736 -32.82996,4.54569 z'},
@@ -416,6 +417,7 @@ loop();
     Meteor.setTimeout(function(){
       $("#prueba").removeClass("zoomer");
       $("#canvas").css("visibility", "hidden");
+      $("#modalFade").css("visibility", "hidden");
     }, 5000);
   }
   	render() {
@@ -506,7 +508,8 @@ loop();
 	let isLoggedIn = false;
     return (
     	<div>
-      <canvas id="canvas" className="divStyle1"></canvas>
+        <div id="modalFade" className="modalFade"></div>
+        <canvas id="canvas" className="divStyle1"></canvas>
     		<Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
     		<div id="loginView" className="background container-fluid">
 	        	<div className="row centerVert">
@@ -519,6 +522,7 @@ loop();
 	        	</div>
 	      	</div>
           <div className="divStyle" id="prueba">
+            <p className="textPrize">Conejo Bueno</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="700" height="600" viewBox="0 0 700 600">
               <path id="path5419" d="m 627.55727,563.46269 -34.09265,-47.72968 39.14342,27.7792 z"/>
               <path id="path4232" d="m 602.30346,512.19745 -8.83884,3.53556 39.14342,27.7792 z"/>
