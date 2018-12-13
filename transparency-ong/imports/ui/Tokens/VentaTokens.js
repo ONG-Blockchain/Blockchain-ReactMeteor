@@ -85,7 +85,7 @@ export default class VentaTokens extends React.Component {
                         <p>Tarjetas Validas:MasterCard, AMEX, VISA</p>
                         <div className="container">
                             <div className="row">
-                                <div className="col">
+                                <div className="col cardcol">
                                     <img src="http://www.vectorific.com/images/previews/2009-09-24-creditcard_BIG.gif" alt="card_image" className="card"/>
                                 </div>
                                 <div className="col">
@@ -116,7 +116,8 @@ export default class VentaTokens extends React.Component {
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button className="btn btn-danger"onClick={this.handleClose.bind(this)}>Cancelar.</Button>
+                        <Button className="btn btn-success">Comprar</Button>
+                        <Button className="btn btn-danger" onClick={this.handleClose.bind(this)}>Cancelar.</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
