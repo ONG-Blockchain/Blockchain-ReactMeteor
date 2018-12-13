@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,600,700,800,900');
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+.button1{
+	line-height: 2.2em !important;
+	font-size: 1.2em !important;
+}
 .carousels{
 	display: -webkit-inline-box;
 	margin-left: 25%;

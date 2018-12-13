@@ -90,7 +90,7 @@ class Login extends TrackerReact(React.Component) {
             		</div>
           		</div>
         	</div>
-        	<button className="btn btn-secondary centrar" onClick={this.login1.bind(this)}>Login</button>
+        	<button className="btn btn-secondary centrar button1" onClick={this.login1.bind(this)}>Login</button>
       	</div>
     );
 
@@ -152,7 +152,7 @@ class Login extends TrackerReact(React.Component) {
 	          	</div>
 
 	        </div>
-        	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
+        	<button className="btn btn-dark registerbtn button1" onClick={this.register.bind(this)}>Registrar</button>
       	</div>
     );
     return (

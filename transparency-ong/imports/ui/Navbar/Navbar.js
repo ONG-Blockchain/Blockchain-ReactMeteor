@@ -13,7 +13,7 @@ function LoginButton(props) {
 function LogoutButton(props) {
   	return (
     	<span className="navbar-text">
-      		<button onClick={props.handleLogout} className="btn btn-outline-success my-2 my-sm-0" >Cerrar Sesi&oacute;n</button>
+      		<button onClick={props.handleLogout} className="btn btn-outline-success my-2 my-sm-0 button1" >Cerrar Sesi&oacute;n</button>
     	</span>
   	);
 }
