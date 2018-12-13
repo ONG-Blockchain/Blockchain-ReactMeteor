@@ -64,7 +64,7 @@ class VerEvento extends TrackerReact(React.Component) {
                         <div className="row">
                             <div className="col alineamiento">
                                 <label className="titulodescripcion">Total a Recaudar: $</label>
-                                <label className="titulodescripcion pad">[0.00]</label>
+                                <label className="titulodescripcion pad">{eventoObj.Meta}</label>
                                 <label className="fechadeexp" >Evento Hasta: </label>
                                 <label> {eventoObj.FechaFinal}</label>
                                 </div>
