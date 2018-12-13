@@ -8,7 +8,9 @@ import Header from '../Header.js';
 
 import Navbar from '../Navbar/Navbar.js';
 
-class Login extends React.Component {
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
+
+class Login extends TrackerReact(React.Component) {
   constructor(){
     super();
     var logged = this.logIn();
@@ -63,24 +65,28 @@ class Login extends React.Component {
         	}
       	});
 	}
+
+  goHome(){
+    FlowRouter.go('/home');
+  }
   	render() {
 
     const login = (
       	<div className="container  container2">
-        	<h1 className="registertitle"> Iniciar Sesion </h1>
+        	<h1 className="registertitle"> Iniciar Sesión </h1>
         	<div className="container centrado container2">
           		<div className="row">
 
             		<div className="col-sm">
               			<label className="tag">Usuario: </label>
-              			<input type="text" id="userLogin"/>
+              			<input className="newsletter_input2" type="text" id="userLogin"/>
             		</div>
           		</div>
 
           		<div className="row">
             		<div className="col-sm">
               			<label className="tag">Contraseña: </label>
-              			<input type="password" id="passLogin"/>
+              			<input className="newsletter_input2" type="password" id="passLogin"/>
             		</div>
           		</div>
         	</div>
@@ -97,51 +103,51 @@ class Login extends React.Component {
           		<div className="row">
 
             		<div className="col-sm">
-              			<label className="registerlabel">Nombres: </label>
-              			<input type="text" className="registerinput" id="name"/>
+              			<label className="tag1">Nombres: </label>
+              			<input className="newsletter_input1" type="text"  id="name"/>
             		</div>
 
             		<div className="col-sm">
-              			<label className="registerlabel">Apellidos: </label>
-              			<input type="text" className="registerinput" id="lastname"/>
+              			<label className="tag1">Apellidos: </label>
+              			<input className="newsletter_input1" type="text"  id="lastname"/>
             		</div>
           		</div>
 
 	          	<div className="row">
 
 	            	<div className="col-sm">
-	              		<label  className="registerlabel">Usuario: </label>
-	              		<input type="text" className="registerinput" id="user"/>
+	              		<label  className="tag1">Usuario: </label>
+	              		<input className="newsletter_input1" type="text"  id="user"/>
 	            	</div>
 
 	            	<div className="col-sm">
-	              		<label className="registerlabel">Identidad: </label>
-	              		<input type="text" className="registerinput" id="identity"/>
+	              		<label className="tag1">Identidad: </label>
+	              		<input className="newsletter_input1" type="text"  id="identity"/>
 	            	</div>
 	          	</div>
 
 	          	<div className="row">
 	            	<div className="col-sm">
-	              		<label className="registerlabel">Contraseña: </label>
-	              		<input type="password" className="registerinput" id="pass"/>
+	              		<label className="tag1">Contraseña: </label>
+	              		<input className="newsletter_input1" type="password"  id="pass"/>
 	            	</div>
 
 	            	<div className="col-sm">
-	              		<label className="registerlabel">Confirmar Contraseña: </label>
-	              		<input type="password" className="registerinput"  id="pass2"/>
+	              		<label className="tag1">Confirmar Contraseña: </label>
+	              		<input className="newsletter_input1" type="password"  id="pass2"/>
 	            	</div>
 	          	</div>
 
 	          	<div className="row">
 
 	            	<div className="col-sm">
-	              		<label className="registerlabel">Telefono/Celular: </label>
-	              		<input type="text" className="registerinput" id="number"/>
+	              		<label className="tag1">Telefono/Celular: </label>
+	              		<input className="newsletter_input1" type="text"  id="number"/>
 	            	</div>
 
-	            	<div className="col-sm content">
-	              		<label className="registerlabel">Correo electronico: </label>
-	              		<input type="e-mail" className="registerinput" id="email"/>
+	            	<div className="col-sm">
+	              		<label className="tag1">Correo electronico: </label>
+	              		<input className="newsletter_input1" type="e-mail"  id="email"/>
 	            	</div>
 	          	</div>
 
@@ -149,19 +155,25 @@ class Login extends React.Component {
         	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
       	</div>
     );
-	let isLoggedIn = false;
+	let loggedIn = this.state.isLoggedIn;
     return (
     	<div>
     		<Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
     		<div id="loginView" className="background container-fluid">
-	        	<div className="row centerVert">
-	          		<div className="col login">
-	            		{login}
-	          		</div>
-	          		<div className="col register">
-	            		{register}
-	          		</div>
-	        	</div>
+            { loggedIn ? (
+              <div className="row centerVert">
+                <button className="newsletter_button2" onClick={this.goHome}>Ver Eventos</button>
+              </div>
+            ) : (
+              <div className="row centerVert">
+                <div className="col login">
+                  {login}
+                </div>
+                <div className="col register">
+                  {register}
+                </div>
+              </div>
+            )}
 	      	</div>
 			<div className="about">
 				<div className="container">
@@ -169,16 +181,16 @@ class Login extends React.Component {
 
 						<div className="col-lg-6">
 							<div className="about_content">
-								<div className="section_title">A few words about us</div>
-								<div className="section_subtitle">Search your dream home</div>
+								<div className="section_title">Sobre Nosotros</div>
+								<div className="section_subtitle">Transparencia por un mejor mañana</div>
 								<div className="about_text">
-									<p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Donec in tempus leo. Aenean ultricies mauris sed quam lacinia lobortis. Cras ut vestibulum enim, in gravida nulla. Curabitur ornare nisl at sagittis cursus. Sed mattis, eros non vulputate luctus, erat dui dapibus augue, eu fringilla tortor ante id mi. Sed a enim libero. Vestibulum pharetra aliquam convallis. </p>
+									<p>Somos una ONG en Tegucigalpa, Honduras. Nos dedicamos a ayudar a quien m&aacute;s lo necesite con el objetivo de mostrar transparencia a quienes realizan donaciones. Nuestra plataforma es 100% transparente en sus eventos, mostrandole a las personas en que se utiliza la recaudación lograda. </p>
 								</div>
 							</div>
 						</div>
 
 						<div className="col-lg-6">
-							<div className="about_image"><img src="images/about_image.jpg" alt=""/></div>
+							<div className="about_image"><img src="/img/intercambio.png" alt=""/></div>
 						</div>
 					</div>
 					<div className="row milestones_row">
@@ -187,8 +199,8 @@ class Login extends React.Component {
 							<div className="milestone d-flex flex-row align-items-center justify-content-start">
 								<div className="milestone_icon d-flex flex-column align-items-center justify-content-center"><img src="/img/milestones_1.png" alt=""/></div>
 								<div className="milestone_content">
-									<div className="milestone_counter" data-end-value="651">0</div>
-									<div className="milestone_text">Properties Sold</div>
+									<div className="milestone_counter" data-end-value="651">99</div>
+									<div className="milestone_text">Recaudaciones Exitosas</div>
 								</div>
 							</div>
 						</div>
@@ -197,8 +209,8 @@ class Login extends React.Component {
 							<div className="milestone d-flex flex-row align-items-center justify-content-start">
 								<div className="milestone_icon d-flex flex-column align-items-center justify-content-center"><img src="/img/milestones_2.png" alt=""/></div>
 								<div className="milestone_content">
-									<div className="milestone_counter" data-end-value="1256">0</div>
-									<div className="milestone_text">Happy Clients</div>
+									<div className="milestone_counter" data-end-value="1256">50</div>
+									<div className="milestone_text">Familias Ayudadas</div>
 								</div>
 							</div>
 						</div>
@@ -207,8 +219,8 @@ class Login extends React.Component {
 							<div className="milestone d-flex flex-row align-items-center justify-content-start">
 								<div className="milestone_icon d-flex flex-column align-items-center justify-content-center"><img src="/img/milestones_3.png" alt=""/></div>
 								<div className="milestone_content">
-									<div className="milestone_counter" data-end-value="124">0</div>
-									<div className="milestone_text">Buildings Sold</div>
+									<div className="milestone_counter" data-end-value="124">49</div>
+									<div className="milestone_text">Escuelas Ayudadas</div>
 								</div>
 								
 							</div>
@@ -218,8 +230,8 @@ class Login extends React.Component {
 							<div className="milestone d-flex flex-row align-items-center justify-content-start">
 								<div className="milestone_icon d-flex flex-column align-items-center justify-content-center"><img src="/img/milestones_4.png" alt=""/></div>
 								<div className="milestone_content">
-									<div className="milestone_counter" data-end-value="25">0</div>
-									<div className="milestone_text">Awards Won</div>
+									<div className="milestone_counter" data-end-value="25">3</div>
+									<div className="milestone_text">Premios Ganados</div>
 								</div>
 							</div>
 						</div>
@@ -232,8 +244,8 @@ class Login extends React.Component {
 				<div className="container">
 					<div className="row">
 						<div className="col">
-							<div className="section_title">The Realtors</div>
-							<div className="section_subtitle">Search your dream home</div>
+							<div className="section_title">Miembros</div>
+							<div className="section_subtitle">Transparencia obligación de todos</div>
 						</div>
 					</div>
 					<div className="row realtors_row">
@@ -241,10 +253,10 @@ class Login extends React.Component {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="images/realtor_1.jpg" alt=""/></div>
+									<div className="realtor_image"><img src="img/christian.jpeg"/></div>
 									<div className="realtor_body">
-										<div className="realtor_title">Maria Williams</div>
-										<div className="realtor_subtitle">Senior Realtor</div>
+										<div className="realtor_title">Christian E. Rodriguez</div>
+										<div className="realtor_subtitle">CMO</div>
 									</div>
 									<div className="realtor_link"><a href="#">+</a></div>
 								</div>
@@ -257,10 +269,10 @@ class Login extends React.Component {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="images/realtor_2.jpg" alt=""/></div>
+									<div className="realtor_image"><img src="/img/dario.jpeg"/></div>
 									<div className="realtor_body">
-										<div className="realtor_title">Christian Smith</div>
-										<div className="realtor_subtitle">Senior Realtor</div>
+										<div className="realtor_title">Dario O. Villalta</div>
+										<div className="realtor_subtitle">CEO </div>
 									</div>
 									<div className="realtor_link"><a href="#">+</a></div>
 								</div>
@@ -273,10 +285,10 @@ class Login extends React.Component {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="images/realtor_3.jpg" alt=""/></div>
+									<div className="realtor_image"><img src="/img/jordi.jpeg"/></div>
 									<div className="realtor_body">
-										<div className="realtor_title">Steve G. Brown</div>
-										<div className="realtor_subtitle">Senior Realtor</div>
+										<div className="realtor_title">Jordi R. Mairena</div>
+										<div className="realtor_subtitle">CTO</div>
 									</div>
 									<div className="realtor_link"><a href="#">+</a></div>
 								</div>
@@ -289,10 +301,10 @@ class Login extends React.Component {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="images/realtor_4.jpg" alt=""/></div>
+									<div className="realtor_image"><img src="/img/miguel.jpeg"/></div>
 									<div className="realtor_body">
-										<div className="realtor_title">Jessica Walsh</div>
-										<div className="realtor_subtitle">Senior Realtor</div>
+										<div className="realtor_title">Miguel A. Ardon</div>
+										<div className="realtor_subtitle">CISO</div>
 									</div>
 									<div className="realtor_link"><a href="#">+</a></div>
 								</div>
@@ -314,13 +326,13 @@ class Login extends React.Component {
 							<div className="col">
 								<div className="newsletter_content d-flex flex-lg-row flex-column align-items-start justify-content-start">
 									<div className="newsletter_title_container">
-										<div className="newsletter_title">Are you buying or selling?</div>
-										<div className="newsletter_subtitle">Search your dream home</div>
+										<div className="newsletter_title">Deseas mantenerte informado?</div>
+										<div className="newsletter_subtitle">Transparencia por un mejor mañana</div>
 									</div>
 									<div className="newsletter_form_container">
 										<form action="#" className="newsletter_form">
 											<input type="email" className="newsletter_input" placeholder="Your e-mail address" required="required"/>
-											<button className="newsletter_button">subscribe now</button>
+											<button className="newsletter_button">Suscribirse</button>
 										</form>
 									</div>
 								</div>

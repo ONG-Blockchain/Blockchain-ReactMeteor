@@ -1,0 +1,52 @@
+.TituloVerEvento{
+    text-align: center;
+    color: black;
+}
+.contenedor{
+    background-color: rgba(105,105,105, 0.4);
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 3%;
+}
+.descripciondeevento{
+    content: justify;
+    color: black;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+.titulodescripcion{
+    color:black;
+}
+.alineamiento{
+    padding: 0;
+    align-items: baseline;
+}
+.alineartotal{
+    padding-top: 1%;
+    
+}
+.alineamiento label{
+    font-size: 30px;
+}
+.pad{
+    padding-left: 2%;
+}
+.centrarbotones{
+    padding-left: 35%;
+    padding-top: 3%;
+}
+.centrarbotones .btn-secondary{
+    margin-right: 8%;
+}
+.centrarbotones .btn-secondary .btn-dark{
+    padding-top: 10%;
+}
+.fechadeexp{
+    margin-left: 28%;
+}
+.alineamiento label{
+    color: black;
+}
+.addPadding{
+    padding: 0% 20%;
+}

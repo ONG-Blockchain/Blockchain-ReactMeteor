@@ -13,7 +13,7 @@ export default class Header extends React.Component {
 									<div className="home_title">{this.props.children}</div>
 									<div className="breadcrumbs ml-auto">
 										<ul>
-											<li><a href="/">Home</a></li>
+											<li><a href="/home">Home</a></li>
 											<li>{this.props.children}</li>
 										</ul>
 									</div>
