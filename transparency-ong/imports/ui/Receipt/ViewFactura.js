@@ -66,6 +66,7 @@ class ViewFactura extends TrackerReact(React.Component) {
                                             </div>
                                             <div className="property_body text-center">
                                                 <div className="property_title"><a href="">{objeto.Nombre}</a></div>
+                                                <div className="property_location">Precio Total:</div>
                                                 <div className="property_price">$ {objeto.PrecioUnidad * objeto.Cantidad}</div>
                                             </div>
                                             <div className="property_footer d-flex flex-row align-items-center justify-content-start">
