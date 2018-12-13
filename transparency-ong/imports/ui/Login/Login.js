@@ -11,16 +11,16 @@ import Navbar from '../Navbar/Navbar.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 class Login extends TrackerReact(React.Component) {
-  constructor(){
-    super();
-    var logged = this.logIn();
-    this.state = {
-      isLoggedIn: logged,
-    }
-  }
-  logIn(){
-    return Meteor.userId() != null;
-  }
+  	constructor(){
+    	super();
+    	var logged = this.logIn();
+    	this.state = {
+      		isLoggedIn: logged,
+    	}
+  	}
+  	logIn(){
+    	return Meteor.userId() != null;
+  	}
 	register(event){
 		var Profile = {
         	firstname: $("#name").val(),
@@ -41,34 +41,34 @@ class Login extends TrackerReact(React.Component) {
           		Bert.alert( 'No se pudo registrar el usuario.', 'danger', 'fixed-bottom', 'fa-frown-o' );
         	}else{
           		Bert.alert( 'Usuario registrado exitosamente!', 'success', 'fixed-bottom', 'fa-smile-o' );
-              self.setState({isLoggedIn: true});
+              	self.setState({isLoggedIn: true});
           		FlowRouter.go('/home');
         	}
       	});
 	}
 
-  handleLogout(){
-    this.setState({isLoggedIn: false});
-    Meteor.logout();
-    Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
-  }
+  	handleLogout(){
+    	this.setState({isLoggedIn: false});
+    	Meteor.logout();
+    	Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
+  	}
 
 	login1(){
-    const self = this;
+    	const self = this;
 		Meteor.loginWithPassword($("#userLogin").val(), $("#passLogin").val(), function(error){
         	if(error){
           		Bert.alert( 'El correo electrónico y/o contraseña que ha introducido son incorrectos.', 'danger', 'fixed-bottom', 'fa-frown-o' );
         	}else{
           		Bert.alert( 'Login Successfully!', 'success', 'fixed-bottom', 'fa-smile-o' );
+          		self.setState({isLoggedIn: true});
           		FlowRouter.go('/home');
-              self.setState({isLoggedIn: true});
         	}
       	});
 	}
 
-  goHome(){
-    FlowRouter.go('/home');
-  }
+  	goHome(){
+    	FlowRouter.go('/home');
+  	}
   	render() {
 
     const login = (
