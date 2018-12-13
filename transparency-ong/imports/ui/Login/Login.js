@@ -150,6 +150,16 @@ class Login extends TrackerReact(React.Component) {
 	              		<input className="newsletter_input1" type="e-mail"  id="email"/>
 	            	</div>
 	          	</div>
+							<div className="row">
+								<div className="col-sm">
+									<label className="tag1">PrivateKey MetaMask: </label>
+	              	<input className="newsletter_input1" type="text"  id="number"/>
+								</div>
+								<div className="col-sm">
+									<label className="tag1">PublicKey MetaMask: </label>
+	              	<input className="newsletter_input1" type="text"  id="number"/>
+								</div>
+							</div>
 
 	        </div>
         	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
