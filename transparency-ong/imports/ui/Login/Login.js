@@ -11,16 +11,16 @@ import Navbar from '../Navbar/Navbar.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 class Login extends TrackerReact(React.Component) {
-  constructor(){
-    super();
-    var logged = this.logIn();
-    this.state = {
-      isLoggedIn: logged,
-    }
-  }
-  logIn(){
-    return Meteor.userId() != null;
-  }
+  	constructor(){
+    	super();
+    	var logged = this.logIn();
+    	this.state = {
+      		isLoggedIn: logged,
+    	}
+  	}
+  	logIn(){
+    	return Meteor.userId() != null;
+  	}
 	register(event){
 		var Profile = {
         	firstname: $("#name").val(),
@@ -41,126 +41,125 @@ class Login extends TrackerReact(React.Component) {
           		Bert.alert( 'No se pudo registrar el usuario.', 'danger', 'fixed-bottom', 'fa-frown-o' );
         	}else{
           		Bert.alert( 'Usuario registrado exitosamente!', 'success', 'fixed-bottom', 'fa-smile-o' );
-              self.setState({isLoggedIn: true});
+              	self.setState({isLoggedIn: true});
           		FlowRouter.go('/home');
         	}
       	});
 	}
 
-  handleLogout(){
-    this.setState({isLoggedIn: false});
-    Meteor.logout();
-    Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
-  }
+  	handleLogout(){
+    	this.setState({isLoggedIn: false});
+    	Meteor.logout();
+    	Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
+  	}
 
 	login1(){
-    const self = this;
+    	const self = this;
 		Meteor.loginWithPassword($("#userLogin").val(), $("#passLogin").val(), function(error){
         	if(error){
           		Bert.alert( 'El correo electrónico y/o contraseña que ha introducido son incorrectos.', 'danger', 'fixed-bottom', 'fa-frown-o' );
         	}else{
           		Bert.alert( 'Login Successfully!', 'success', 'fixed-bottom', 'fa-smile-o' );
+          		self.setState({isLoggedIn: true});
           		FlowRouter.go('/home');
-              self.setState({isLoggedIn: true});
         	}
       	});
 	}
 
-  goHome(){
-    FlowRouter.go('/home');
-  }
+  	goHome(){
+    	FlowRouter.go('/home');
+  	}
   	render() {
 
-    const login = (
-      	<div className="container  container2">
-        	<h1 className="registertitle"> Iniciar Sesión </h1>
-        	<div className="container centrado container2">
-          		<div className="row">
+	    const login = (
+	      	<div className="container  container2">
+	        	<h1 className="registertitle"> Iniciar Sesión </h1>
+	        	<div className="container centrado container2">
+	          		<div className="row">
 
-            		<div className="col-sm">
-              			<label className="tag">Usuario: </label>
-              			<input className="newsletter_input2" type="text" id="userLogin"/>
-            		</div>
-          		</div>
+	            		<div className="col-sm">
+	              			<label className="tag">Usuario: </label>
+	              			<input className="newsletter_input2" type="text" id="userLogin"/>
+	            		</div>
+	          		</div>
 
-          		<div className="row">
-            		<div className="col-sm">
-              			<label className="tag">Contraseña: </label>
-              			<input className="newsletter_input2" type="password" id="passLogin"/>
-            		</div>
-          		</div>
-        	</div>
-        	<button className="btn btn-secondary centrar" onClick={this.login1.bind(this)}>Login</button>
-      	</div>
-    );
+	          		<div className="row">
+	            		<div className="col-sm">
+	              			<label className="tag">Contraseña: </label>
+	              			<input className="newsletter_input2" type="password" id="passLogin"/>
+	            		</div>
+	          		</div>
+	        	</div>
+	        	<button className="btn btn-secondary centrar" onClick={this.login1.bind(this)}>Login</button>
+	      	</div>
+	    );
 
-    const register = (
-      	<div className="container container2">
-        	<h1 className="registertitle">Registrarse</h1>
+	    const register = (
+	      	<div className="container container2">
+	        	<h1 className="registertitle">Registrarse</h1>
 
-        	<div className="container container2">
+	        	<div className="container container2">
 
-          		<div className="row">
+	          		<div className="row">
 
-            		<div className="col-sm">
-              			<label className="tag1">Nombres: </label>
-              			<input className="newsletter_input1" type="text"  id="name"/>
-            		</div>
+	            		<div className="col-sm">
+	              			<label className="tag1">Nombres: </label>
+	              			<input className="newsletter_input1" type="text"  id="name"/>
+	            		</div>
 
-            		<div className="col-sm">
-              			<label className="tag1">Apellidos: </label>
-              			<input className="newsletter_input1" type="text"  id="lastname"/>
-            		</div>
-          		</div>
+	            		<div className="col-sm">
+	              			<label className="tag1">Apellidos: </label>
+	              			<input className="newsletter_input1" type="text"  id="lastname"/>
+	            		</div>
+	          		</div>
 
-	          	<div className="row">
+		          	<div className="row">
 
-	            	<div className="col-sm">
-	              		<label  className="tag1">Usuario: </label>
-	              		<input className="newsletter_input1" type="text"  id="user"/>
-	            	</div>
+		            	<div className="col-sm">
+		              		<label  className="tag1">Usuario: </label>
+		              		<input className="newsletter_input1" type="text"  id="user"/>
+		            	</div>
 
-	            	<div className="col-sm">
-	              		<label className="tag1">Identidad: </label>
-	              		<input className="newsletter_input1" type="text"  id="identity"/>
-	            	</div>
-	          	</div>
+		            	<div className="col-sm">
+		              		<label className="tag1">Identidad: </label>
+		              		<input className="newsletter_input1" type="text"  id="identity"/>
+		            	</div>
+		          	</div>
 
-	          	<div className="row">
-	            	<div className="col-sm">
-	              		<label className="tag1">Contraseña: </label>
-	              		<input className="newsletter_input1" type="password"  id="pass"/>
-	            	</div>
+		          	<div className="row">
+		            	<div className="col-sm">
+		              		<label className="tag1">Contraseña: </label>
+		              		<input className="newsletter_input1" type="password"  id="pass"/>
+		            	</div>
 
-	            	<div className="col-sm">
-	              		<label className="tag1">Confirmar Contraseña: </label>
-	              		<input className="newsletter_input1" type="password"  id="pass2"/>
-	            	</div>
-	          	</div>
+		            	<div className="col-sm">
+		              		<label className="tag1">Confirmar Contraseña: </label>
+		              		<input className="newsletter_input1" type="password"  id="pass2"/>
+		            	</div>
+		          	</div>
 
-	          	<div className="row">
+		          	<div className="row">
 
-	            	<div className="col-sm">
-	              		<label className="tag1">Telefono/Celular: </label>
-	              		<input className="newsletter_input1" type="text"  id="number"/>
-	            	</div>
+		            	<div className="col-sm">
+		              		<label className="tag1">Telefono/Celular: </label>
+		              		<input className="newsletter_input1" type="text"  id="number"/>
+		            	</div>
 
-	            	<div className="col-sm">
-	              		<label className="tag1">Correo electronico: </label>
-	              		<input className="newsletter_input1" type="e-mail"  id="email"/>
-	            	</div>
-	          	</div>
+		            	<div className="col-sm">
+		              		<label className="tag1">Correo electronico: </label>
+		              		<input className="newsletter_input1" type="e-mail"  id="email"/>
+		            	</div>
+		          	</div>
 
-	        </div>
-        	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
-      	</div>
-    );
-	let loggedIn = this.state.isLoggedIn;
-    return (
+		        </div>
+	        	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
+	      	</div>
+	    );
+    	return (
     	<div>
     		<Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
     		<div id="loginView" className="background container-fluid">
-            { loggedIn ? (
+            { this.state.isLoggedIn ? (
               <div className="row centerVert">
                 <button className="newsletter_button2" onClick={this.goHome}>Ver Eventos</button>
               </div>
