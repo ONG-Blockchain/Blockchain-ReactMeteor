@@ -1226,8 +1226,8 @@ section
 .newsletter
 {
 	width: 100%;
-	padding-top: 107px;
-	padding-bottom: 105px;
+	//padding-top: 107px;
+	//padding-bottom: 105px;
 }
 .newsletter_title
 {
