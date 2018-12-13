@@ -155,12 +155,11 @@ class Login extends TrackerReact(React.Component) {
         	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
       	</div>
     );
-	let loggedIn = this.state.isLoggedIn;
     return (
     	<div>
     		<Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
     		<div id="loginView" className="background container-fluid">
-            { loggedIn ? (
+            { this.state.loggedIn ? (
               <div className="row centerVert">
                 <button className="newsletter_button2" onClick={this.goHome}>Ver Eventos</button>
               </div>
@@ -253,7 +252,7 @@ class Login extends TrackerReact(React.Component) {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="img/christian.jpeg"/></div>
+									<div className="realtor_image"><img src="/img/christian.jpeg"/></div>
 									<div className="realtor_body">
 										<div className="realtor_title">Christian E. Rodriguez</div>
 										<div className="realtor_subtitle">CMO</div>

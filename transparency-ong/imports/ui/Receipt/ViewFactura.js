@@ -3,7 +3,7 @@ import './properties.css';
 import './properties_responsive.css';
 
 import { Events } from '../../api/Events.js';
-import { Factura } from '../../api/Factura.js';
+import { Factura, FacturaImages } from '../../api/Factura.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Header from '../Header.js';
 import Navbar from '../Navbar/Navbar.js';
@@ -40,7 +40,10 @@ class ViewFactura extends TrackerReact(React.Component) {
     render() {
         let eventoId = FlowRouter.getParam("eventoId");
         eventoId = parseInt(eventoId);
-        let objetos = Factura.find().fetch();
+        let objetos = Factura.find({"EventId": eventoId}).fetch();
+        let imageUrl = '';
+        if(FacturaImages.findOne({"eventId": eventoId}))
+            imageUrl = FacturaImages.findOne({"eventId": eventoId}).image
         return (
             <div>
                 <Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
@@ -58,9 +61,9 @@ class ViewFactura extends TrackerReact(React.Component) {
                                 {objetos.map((objeto, i) =>
                                     <div className="col-xl-4 col-lg-6 property_col" key={i}>
                                         <div className="property">
-                                            {/*<div className="property_image">
-                                                <img src="images/property_1.jpg" alt="">
-                                            </div>*/}
+                                            <div className="property_image">
+                                                <img src={FacturaImages.findOne({"eventId": objeto.Id}) != null ? FacturaImages.findOne({"eventId": objeto.Id}).image : "" } alt="" className="fillImg"/>
+                                            </div>
                                             <div className="property_body text-center">
                                                 <div className="property_title"><a href="">{objeto.Nombre}</a></div>
                                                 <div className="property_price">$ {objeto.PrecioUnidad * objeto.Cantidad}</div>
