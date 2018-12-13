@@ -23,7 +23,7 @@ export default class Navbar extends React.Component {
 		let isLoggedIn = this.props.isLoggedIn;
 		let button;
 
-	    if (isLoggedIn) {
+	    if (this.props.isLoggedIn) {
 	      	button = <LogoutButton handleLogout={this.props.handleLogout}/>;
 	    } else {
 	      	button = <LoginButton />;

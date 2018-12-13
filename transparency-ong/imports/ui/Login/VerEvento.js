@@ -21,7 +21,7 @@ class VerEvento extends TrackerReact(React.Component) {
     handleLogout(){
         this.setState({isLoggedIn: false});
         Meteor.logout();
-        FlowRouter.go('/');
+        Meteor.setTimeout(function(){FlowRouter.go('/')}, 250);
         Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
     }
     
