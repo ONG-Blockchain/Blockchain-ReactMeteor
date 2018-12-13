@@ -5,6 +5,7 @@ import {mount} from 'react-mounter';
 import {MainLayout} from '../imports/ui/MainLayout/MainLayout.js';
 import Login from '../imports/ui/Login/Login.js';
 import EventManager from '../imports/ui/Login/EventManager.js';
+import VentaTokens from '../imports/ui/Tokens/VentaTokens.js';
 import VerEvento from '../imports/ui/Login/VerEvento.js';
 import Home from '../imports/ui/Home/Home.js';
 
@@ -27,6 +28,15 @@ adminRoutes.route('/editeventos', {
 		})
 	}
 });
+
+adminRoutes.route('/comprar', {
+	action(){
+		mount(MainLayout, {
+			content: (<VentaTokens/>)
+		})
+  }
+});
+
 adminRoutes.route('/verevento/:eventoId', {
 	action() {
 		mount(MainLayout, {
