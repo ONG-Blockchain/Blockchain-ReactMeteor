@@ -71,95 +71,95 @@ class Login extends TrackerReact(React.Component) {
   	}
   	render() {
 
-	    const login = (
-	      	<div className="container  container2">
-	        	<h1 className="registertitle"> Iniciar Sesión </h1>
-	        	<div className="container centrado container2">
-	          		<div className="row">
+    const login = (
+      	<div className="container  container2">
+        	<h1 className="registertitle"> Iniciar Sesión </h1>
+        	<div className="container centrado container2">
+          		<div className="row">
 
-	            		<div className="col-sm">
-	              			<label className="tag">Usuario: </label>
-	              			<input className="newsletter_input2" type="text" id="userLogin"/>
-	            		</div>
-	          		</div>
+            		<div className="col-sm">
+              			<label className="tag">Usuario: </label>
+              			<input className="newsletter_input2" type="text" id="userLogin"/>
+            		</div>
+          		</div>
 
-	          		<div className="row">
-	            		<div className="col-sm">
-	              			<label className="tag">Contraseña: </label>
-	              			<input className="newsletter_input2" type="password" id="passLogin"/>
-	            		</div>
-	          		</div>
-	        	</div>
-	        	<button className="btn btn-secondary centrar" onClick={this.login1.bind(this)}>Login</button>
-	      	</div>
-	    );
+          		<div className="row">
+            		<div className="col-sm">
+              			<label className="tag">Contraseña: </label>
+              			<input className="newsletter_input2" type="password" id="passLogin"/>
+            		</div>
+          		</div>
+        	</div>
+        	<button className="btn btn-secondary centrar" onClick={this.login1.bind(this)}>Login</button>
+      	</div>
+    );
 
-	    const register = (
-	      	<div className="container container2">
-	        	<h1 className="registertitle">Registrarse</h1>
+    const register = (
+      	<div className="container container2">
+        	<h1 className="registertitle">Registrarse</h1>
 
-	        	<div className="container container2">
+        	<div className="container container2">
 
-	          		<div className="row">
+          		<div className="row">
 
-	            		<div className="col-sm">
-	              			<label className="tag1">Nombres: </label>
-	              			<input className="newsletter_input1" type="text"  id="name"/>
-	            		</div>
+            		<div className="col-sm">
+              			<label className="tag1">Nombres: </label>
+              			<input className="newsletter_input1" type="text"  id="name"/>
+            		</div>
 
-	            		<div className="col-sm">
-	              			<label className="tag1">Apellidos: </label>
-	              			<input className="newsletter_input1" type="text"  id="lastname"/>
-	            		</div>
-	          		</div>
+            		<div className="col-sm">
+              			<label className="tag1">Apellidos: </label>
+              			<input className="newsletter_input1" type="text"  id="lastname"/>
+            		</div>
+          		</div>
 
-		          	<div className="row">
+	          	<div className="row">
 
-		            	<div className="col-sm">
-		              		<label  className="tag1">Usuario: </label>
-		              		<input className="newsletter_input1" type="text"  id="user"/>
-		            	</div>
+	            	<div className="col-sm">
+	              		<label  className="tag1">Usuario: </label>
+	              		<input className="newsletter_input1" type="text"  id="user"/>
+	            	</div>
 
-		            	<div className="col-sm">
-		              		<label className="tag1">Identidad: </label>
-		              		<input className="newsletter_input1" type="text"  id="identity"/>
-		            	</div>
-		          	</div>
+	            	<div className="col-sm">
+	              		<label className="tag1">Identidad: </label>
+	              		<input className="newsletter_input1" type="text"  id="identity"/>
+	            	</div>
+	          	</div>
 
-		          	<div className="row">
-		            	<div className="col-sm">
-		              		<label className="tag1">Contraseña: </label>
-		              		<input className="newsletter_input1" type="password"  id="pass"/>
-		            	</div>
+	          	<div className="row">
+	            	<div className="col-sm">
+	              		<label className="tag1">Contraseña: </label>
+	              		<input className="newsletter_input1" type="password"  id="pass"/>
+	            	</div>
 
-		            	<div className="col-sm">
-		              		<label className="tag1">Confirmar Contraseña: </label>
-		              		<input className="newsletter_input1" type="password"  id="pass2"/>
-		            	</div>
-		          	</div>
+	            	<div className="col-sm">
+	              		<label className="tag1">Confirmar Contraseña: </label>
+	              		<input className="newsletter_input1" type="password"  id="pass2"/>
+	            	</div>
+	          	</div>
 
-		          	<div className="row">
+	          	<div className="row">
 
-		            	<div className="col-sm">
-		              		<label className="tag1">Telefono/Celular: </label>
-		              		<input className="newsletter_input1" type="text"  id="number"/>
-		            	</div>
+	            	<div className="col-sm">
+	              		<label className="tag1">Telefono/Celular: </label>
+	              		<input className="newsletter_input1" type="text"  id="number"/>
+	            	</div>
 
-		            	<div className="col-sm">
-		              		<label className="tag1">Correo electronico: </label>
-		              		<input className="newsletter_input1" type="e-mail"  id="email"/>
-		            	</div>
-		          	</div>
+	            	<div className="col-sm">
+	              		<label className="tag1">Correo electronico: </label>
+	              		<input className="newsletter_input1" type="e-mail"  id="email"/>
+	            	</div>
+	          	</div>
 
-		        </div>
-	        	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
-	      	</div>
-	    );
-    	return (
+	        </div>
+        	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
+      	</div>
+    );
+    return (
     	<div>
     		<Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
     		<div id="loginView" className="background container-fluid">
-            { this.state.isLoggedIn ? (
+            { this.state.loggedIn ? (
               <div className="row centerVert">
                 <button className="newsletter_button2" onClick={this.goHome}>Ver Eventos</button>
               </div>
@@ -252,7 +252,7 @@ class Login extends TrackerReact(React.Component) {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="img/christian.jpeg"/></div>
+									<div className="realtor_image"><img src="/img/christian.jpeg"/></div>
 									<div className="realtor_body">
 										<div className="realtor_title">Christian E. Rodriguez</div>
 										<div className="realtor_subtitle">CMO</div>

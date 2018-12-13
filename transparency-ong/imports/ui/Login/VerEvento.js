@@ -73,7 +73,7 @@ class VerEvento extends TrackerReact(React.Component) {
                         <div className="row">
                             <div className="col centrarbotones">
                                 <button className="btn btn-secondary "> Realizar Donacion</button>
-                                <button className="btn btn-dark"> Ver Facturas</button>
+                                <a href={"/verevento/" + eventoObj.Id + "/factura"}><button className="btn btn-dark"> Ver Facturas</button></a>
                             </div>
                         </div>
                     </div>
