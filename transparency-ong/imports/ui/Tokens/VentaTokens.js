@@ -3,14 +3,27 @@ import { Modal, Button } from 'react-bootstrap';
 
 import './Venta.css';
 
+import Navbar from '../Navbar/Navbar.js';
+
 export default class VentaTokens extends React.Component {
     constructor() {
-        super()
+        super();
+        var logged = this.logIn();
         this.state = {
             tokens: 0,
             total: (0).toFixed(2),
-            show: false
+            show: false,
+            isLoggedIn: logged,
         }
+    }
+    logIn(){
+        return Meteor.userId() != null;
+    }
+    handleLogout(){
+        this.setState({isLoggedIn: false});
+        Meteor.logout();
+        Meteor.setTimeout(function(){FlowRouter.go('/')}, 250);
+        Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
     }
     add() {
         this.setState({
@@ -48,6 +61,8 @@ export default class VentaTokens extends React.Component {
     render() {
         const market = (
             <div>
+                <Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
+                <br/><br/>
                 <div className="container container1 contGeneral">
                     <div className="row">
                         <div className="col">

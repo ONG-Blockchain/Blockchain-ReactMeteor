@@ -97,7 +97,7 @@ class EventManager extends React.Component {
                     <div className="row">
                         <textarea className="contact_textarea contact_input" id="descripcion" placeholder="Descripcion" required></textarea>
                     </div>
-                    <button className="btn btn-dark centerbutton" height="100px" onClick={this.addEvent.bind(this)}>Crear</button>
+                    <button className="btn btn-dark centerbutton button1" height="100px" onClick={this.addEvent.bind(this)}>Crear</button>
                 </div>
             </div>
         );
