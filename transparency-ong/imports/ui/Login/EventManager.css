@@ -2,14 +2,13 @@
     background-color: rgb(102,102,102);
 }
 .titulo{
-    padding-top: 10%;
+    padding-top: 6%;
     padding-left: 3%;
     color: black;
 }
 .formulario{
-    padding-bottom: 2%;
-
-    display: block;
+    height: 100vh;
+    display: flow-root !important;
     padding-left: 35%;
     background-color: rgb(178,178,178,.5);
 }
