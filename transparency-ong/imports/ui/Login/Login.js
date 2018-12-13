@@ -155,11 +155,12 @@ class Login extends TrackerReact(React.Component) {
         	<button className="btn btn-dark registerbtn button1" onClick={this.register.bind(this)}>Registrar</button>
       	</div>
     );
+	let logged = this.state.isLoggedIn;
     return (
     	<div>
     		<Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
     		<div id="loginView" className="background container-fluid">
-            { this.state.loggedIn ? (
+            { logged ? (
               <div className="row centerVert">
                 <button className="newsletter_button2" onClick={this.goHome}>Ver Eventos</button>
               </div>

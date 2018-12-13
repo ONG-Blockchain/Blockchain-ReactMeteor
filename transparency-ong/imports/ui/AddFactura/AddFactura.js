@@ -3,9 +3,27 @@ import './AddFactura.css';
 import '../Login/contact.css';
 import '../Login/contact_responsive.css';
 
+import Navbar from '../Navbar/Navbar.js';
+
 import { Factura, FacturaImg, FacturaImages } from '../../api/Factura.js';
 
 class AddFactura extends React.Component {
+    constructor(){
+        super();
+        var logged = this.logIn();
+        this.state = {
+            isLoggedIn: logged,
+        }
+    }
+    logIn(){
+        return Meteor.userId() != null;
+    }
+    handleLogout(){
+        this.setState({isLoggedIn: false});
+        Meteor.logout();
+        Meteor.setTimeout(function(){FlowRouter.go('/')}, 250);
+        Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
+    }
 
     changeLabel() {
         var file = $("#fileEvent").get(0).files[0];
@@ -86,12 +104,13 @@ class AddFactura extends React.Component {
                         <input type="file" className="contact_input posicion inputfile" id="fileEvent" name="fileEvent" accept="image/png,image/jpeg" onChange={this.changeLabel.bind(this)} />
                         <label htmlFor="fileEvent" id="fileEventLabel" className="contact_input centerLabelVerText">Elegir archivo</label>
                     </div>
-                    <button className="btn btn-dark centerbutton" height="100px" onClick={this.addReceipt.bind(this)}>Crear</button>
+                    <button className="btn btn-dark centerbutton button1" height="100px" onClick={this.addReceipt.bind(this)}>Crear</button>
                 </div>
             </div>
         );
         return (
             <div className="fondo">
+                <Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
                 <div className="container">
                     {CreateEvent}
                 </div>
