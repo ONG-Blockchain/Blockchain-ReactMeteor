@@ -50,3 +50,16 @@
 .addPadding{
     padding: 0% 20%;
 }
+/* Modal */
+.tok label{
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.tok button{
+    width: 20%;
+    height: 70%;
+    font-size: 130%;
+    font-weight: bold;
+    border-radius: 50%;
+}
