@@ -5,6 +5,10 @@ import './Venta.css';
 
 import Navbar from '../Navbar/Navbar.js';
 
+import Web3 from 'Web3'
+var Tx = require('ethereumjs-tx');
+const web3 = new Web3(Web3.givenProvider || 'https://ropsten.infura.io/26f7aed34a7d4ebaa313a012b016f66c');
+
 export default class VentaTokens extends React.Component {
     constructor() {
         super();
@@ -14,6 +18,9 @@ export default class VentaTokens extends React.Component {
             total: (0).toFixed(2),
             show: false,
             isLoggedIn: logged,
+            my_privkey: '5017FE33B8D09792A6755A2236D18118FE8159675EBA85C1C2F3B71F8CB7EDFB',
+            myAddress: '0xc3Ba293Ee68A457960F2598D73c0197D29f285D9',
+            destAddress: '',
         }
     }
     logIn(){
@@ -56,6 +63,320 @@ export default class VentaTokens extends React.Component {
         this.setState({
             show: false
         })
+    }
+
+    componentDidMount(){
+        const self = this;
+        Meteor.setTimeout(function(){
+            self.setState({ destAddress: Meteor.user().profile.public });
+        }, 300);
+    }
+
+    async donateToken(my_privkey, myAddress, destAddress, tokensDonar){
+        console.log(`web3 version: ${web3.version}`);
+
+        console.log(myAddress);
+
+        var count = await web3.eth.getTransactionCount(myAddress);
+        console.log(`num transactions so far: ${count}`);
+
+        var abiArray = [{
+            "constant": true,
+            "inputs": [],
+            "name": "name",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "type": "function",
+            "stateMutability": "view"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_spender",
+                    "type": "address"
+                },
+                {
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "approve",
+            "outputs": [
+                {
+                    "name": "success",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "type": "function",
+            "stateMutability": "nonpayable"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "totalSupply",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "type": "function",
+            "stateMutability": "view"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_from",
+                    "type": "address"
+                },
+                {
+                    "name": "_to",
+                    "type": "address"
+                },
+                {
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "transferFrom",
+            "outputs": [
+                {
+                    "name": "success",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "type": "function",
+            "stateMutability": "nonpayable"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "decimals",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "payable": false,
+            "type": "function",
+            "stateMutability": "view"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "version",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "type": "function",
+            "stateMutability": "view"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_owner",
+                    "type": "address"
+                }
+            ],
+            "name": "balanceOf",
+            "outputs": [
+                {
+                    "name": "balance",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "type": "function",
+            "stateMutability": "view"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "symbol",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "type": "function",
+            "stateMutability": "view"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_to",
+                    "type": "address"
+                },
+                {
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "transfer",
+            "outputs": [
+                {
+                    "name": "success",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "type": "function",
+            "stateMutability": "nonpayable"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_spender",
+                    "type": "address"
+                },
+                {
+                    "name": "_value",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_extraData",
+                    "type": "bytes"
+                }
+            ],
+            "name": "approveAndCall",
+            "outputs": [
+                {
+                    "name": "success",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "type": "function",
+            "stateMutability": "nonpayable"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_owner",
+                    "type": "address"
+                },
+                {
+                    "name": "_spender",
+                    "type": "address"
+                }
+            ],
+            "name": "allowance",
+            "outputs": [
+                {
+                    "name": "remaining",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "type": "function",
+            "stateMutability": "view"
+        },
+        {
+            "inputs": [],
+            "payable": false,
+            "type": "constructor",
+            "stateMutability": "nonpayable"
+        },
+        {
+            "payable": false,
+            "type": "fallback",
+            "stateMutability": "nonpayable"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "name": "_from",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "name": "_to",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Transfer",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "name": "_owner",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "name": "_spender",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Approval",
+            "type": "event"
+        }]
+
+        var contractAddress = "0xfc641ca6fd44775a9adb543e4d257818d600c8a1";
+        var contract = new web3.eth.Contract(abiArray, contractAddress, { from: myAddress });
+
+        var balance = await contract.methods.balanceOf(myAddress).call();
+        console.log(`Balance before send: ${balance}`);
+
+        // I chose gas price and gas limit based on what ethereum wallet was recommending for a similar transaction. You may need to change the gas price!
+        var rawTransaction = {
+            "from": myAddress,
+            "nonce": "0x" + count.toString(16),
+            "gasPrice": "0x003B9ACA00",
+            "gasLimit": "0x2DC6C0",
+            "to": contractAddress,
+            "value": "0x0",
+            "data": contract.methods.transfer(destAddress, tokensDonar).encodeABI(),
+            "chainId": 0x03
+        };
+
+        var privKey = new Buffer(my_privkey, 'hex');
+        var tx = new Tx(rawTransaction);
+        tx.sign(privKey);
+        var serializedTx = tx.serialize();
+
+        console.log(`Attempting to send signed tx:  ${serializedTx.toString('hex')}`);
+        var receipt = await web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex'));
+        console.log(`Receipt info:  ${JSON.stringify(receipt, null, '\t')}`);
+
+        balance = await contract.methods.balanceOf(myAddress).call();
+        console.log(`Balance after send: ${balance}`);
     }
 
     render() {
@@ -131,7 +452,7 @@ export default class VentaTokens extends React.Component {
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button className="btn btn-success">Comprar</Button>
+                        <Button className="btn btn-success" onClick={this.donateToken.bind(this,this.state.my_privkey,this.state.myAddress,this.state.destAddress, this.state.tokens)}>Comprar</Button>
                         <Button className="btn btn-danger" onClick={this.handleClose.bind(this)}>Cancelar.</Button>
                     </Modal.Footer>
                 </Modal>

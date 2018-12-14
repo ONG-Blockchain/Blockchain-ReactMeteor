@@ -37,6 +37,7 @@ class EventManager extends React.Component {
         var file = $("#fileEvent").get(0).files[0];
         var fechaFinal = $("#fechaFinal").val();
         var descripcion = $("#descripcion").val();
+        var publickey = $("#publickey").val();
         console.log(nombre);
         console.log(meta);
         console.log(file);
@@ -52,34 +53,38 @@ class EventManager extends React.Component {
                 if (!isNaN(meta)) {
                     if (fechaFinal.length > 0) {
                         if (descripcion.length > 0) {
-                            console.log(file);
-                            if (file) {
-                                var idNewEvent = Events.find().fetch().length + 1;
-                                var fsFile = new FS.File(file);
-                                Images.insert(fsFile, function (err, result) {
-                                    if (err) {
-                                        console.log(err);
-                                    } else {
-                                        console.log(Events.find().fetch());
-                                        console.log('idNewEvent = '+idNewEvent );
-                                        var imageLoc = '/cfs/files/Images/'+result._id;
-                                        EventsImages.insert({
-                                            eventId: idNewEvent,
-                                            image: imageLoc
-                                        });
-                                        Events.insert({
-                                            Id: idNewEvent,
-                                            Nombre: nombre,
-                                            Meta: meta,
-                                            File: file,
-                                            FechaFinal: fechaFinal,
-                                            Descripcion: descripcion
-                                        });
-                                        Bert.alert('Successfully!', 'success', 'fixed-bottom', 'fa-frown-o');
-                                    }
-                                });
+                            if (publickey.length > 0) {
+                                console.log(file);
+                                if (file) {
+                                    var idNewEvent = Events.find().fetch().length + 1;
+                                    var fsFile = new FS.File(file);
+                                    Images.insert(fsFile, function (err, result) {
+                                        if (err) {
+                                            console.log(err);
+                                        } else {
+                                            console.log(Events.find().fetch());
+                                            console.log('idNewEvent = '+idNewEvent );
+                                            var imageLoc = '/cfs/files/Images/'+result._id;
+                                            EventsImages.insert({
+                                                eventId: idNewEvent,
+                                                image: imageLoc
+                                            });
+                                            Events.insert({
+                                                Id: idNewEvent,
+                                                Nombre: nombre,
+                                                Meta: meta,
+                                                File: file,
+                                                FechaFinal: fechaFinal,
+                                                Descripcion: descripcion,
+                                                Public: publickey
+                                            });
+                                            Bert.alert('Successfully!', 'success', 'fixed-bottom', 'fa-frown-o');
+                                        }
+                                    });
+                                } else
+                                    Bert.alert('Error\nSeleccione una imagen.', 'danger', 'fixed-bottom', 'fa-frown-o');
                             } else
-                                Bert.alert('Error\nSeleccione una imagen.', 'danger', 'fixed-bottom', 'fa-frown-o');
+                                Bert.alert('Error\nIngrese una llave publica.', 'danger', 'fixed-bottom', 'fa-frown-o');
                         } else
                             Bert.alert('Error\nIngrese una descripción.', 'danger', 'fixed-bottom', 'fa-frown-o');
                     } else
@@ -114,6 +119,9 @@ class EventManager extends React.Component {
                     </div>
                     <div className="row">
                         <textarea className="contact_textarea contact_input" id="descripcion" placeholder="Descripcion" required></textarea>
+                    </div>
+                    <div className="row">
+                        <input type="text" className="contact_input" id="publickey" placeholder="Llave del evento" />
                     </div>
                     <button className="btn btn-dark centerbutton button1" height="100px" onClick={this.addEvent.bind(this)}>Crear</button>
                 </div>
