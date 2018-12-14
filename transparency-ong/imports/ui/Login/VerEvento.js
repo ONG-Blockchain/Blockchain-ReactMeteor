@@ -33,8 +33,8 @@ class VerEvento extends TrackerReact(React.Component) {
     handleLogout() {
         this.setState({ isLoggedIn: false });
         Meteor.logout();
-        FlowRouter.go('/');
-        Bert.alert('Adios!', 'info', 'fixed-bottom', 'fa-sign-out');
+        Meteor.setTimeout(function(){FlowRouter.go('/')}, 250);
+        Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
     }
 
     showModal() {
@@ -691,7 +691,7 @@ class VerEvento extends TrackerReact(React.Component) {
                         <div className="row">
                             <div className="col alineamiento">
                                 <label className="titulodescripcion">Total a Recaudar: $</label>
-                                <label className="titulodescripcion pad">[0.00]</label>
+                                <label className="titulodescripcion pad">{eventoObj.Meta}</label>
                                 <label className="fechadeexp" >Evento Hasta: </label>
                                 <label> {eventoObj.FechaFinal}</label>
                             </div>
@@ -700,7 +700,7 @@ class VerEvento extends TrackerReact(React.Component) {
                         <div className="row">
                             <div className="col centrarbotones">
                                 <button className="btn btn-secondary" onClick={this.showModal.bind(this)}>Donar</button>
-                                <button className="btn btn-dark"> Ver Facturas</button>
+                                <a href={"/verevento/" + eventoObj.Id + "/factura"}><button className="btn btn-dark button1"> Ver Facturas</button></a>
                             </div>
                         </div>
                     </div>

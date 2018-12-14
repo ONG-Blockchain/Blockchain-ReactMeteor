@@ -13,7 +13,15 @@ function LoginButton(props) {
 function LogoutButton(props) {
   	return (
     	<span className="navbar-text">
-      		<button onClick={props.handleLogout} className="btn btn-outline-success my-2 my-sm-0" >Cerrar Sesi&oacute;n</button>
+      		<button onClick={props.handleLogout} className="btn btn-outline-success my-2 my-sm-0 button1" >Cerrar Sesi&oacute;n</button>
+    	</span>
+  	);
+}
+
+function Cart() {
+  	return (
+    	<span className="navbar-text cartSpan">
+      		<a href="/comprar"> <img src="/img/cart.png" className="cartImg"/> </a>
     	</span>
   	);
 }
@@ -22,11 +30,14 @@ export default class Navbar extends React.Component {
 	render() {
 		let isLoggedIn = this.props.isLoggedIn;
 		let button;
+		let cart;
 
-	    if (isLoggedIn) {
+	    if (this.props.isLoggedIn) {
 	      	button = <LogoutButton handleLogout={this.props.handleLogout}/>;
+	      	cart = <Cart/>;
 	    } else {
 	      	button = <LoginButton />;
+	      	cart = "";
 	    }
 		return (
 			<div>
@@ -39,6 +50,7 @@ export default class Navbar extends React.Component {
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mr-auto">
 						</ul>
+						{cart}
 						{button}
 					</div>
 				</nav>

@@ -11,16 +11,16 @@ import Navbar from '../Navbar/Navbar.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 class Login extends TrackerReact(React.Component) {
-  constructor(){
-    super();
-    var logged = this.logIn();
-    this.state = {
-      isLoggedIn: logged,
-    }
-  }
-  logIn(){
-    return Meteor.userId() != null;
-  }
+  	constructor(){
+    	super();
+    	var logged = this.logIn();
+    	this.state = {
+      		isLoggedIn: logged,
+    	}
+  	}
+  	logIn(){
+    	return Meteor.userId() != null;
+  	}
 	register(event){
 		var Profile = {
         	firstname: $("#name").val(),
@@ -41,34 +41,34 @@ class Login extends TrackerReact(React.Component) {
           		Bert.alert( 'No se pudo registrar el usuario.', 'danger', 'fixed-bottom', 'fa-frown-o' );
         	}else{
           		Bert.alert( 'Usuario registrado exitosamente!', 'success', 'fixed-bottom', 'fa-smile-o' );
-              self.setState({isLoggedIn: true});
+              	self.setState({isLoggedIn: true});
           		FlowRouter.go('/home');
         	}
       	});
 	}
 
-  handleLogout(){
-    this.setState({isLoggedIn: false});
-    Meteor.logout();
-    Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
-  }
+  	handleLogout(){
+    	this.setState({isLoggedIn: false});
+    	Meteor.logout();
+    	Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
+  	}
 
 	login1(){
-    const self = this;
+    	const self = this;
 		Meteor.loginWithPassword($("#userLogin").val(), $("#passLogin").val(), function(error){
         	if(error){
           		Bert.alert( 'El correo electrónico y/o contraseña que ha introducido son incorrectos.', 'danger', 'fixed-bottom', 'fa-frown-o' );
         	}else{
           		Bert.alert( 'Login Successfully!', 'success', 'fixed-bottom', 'fa-smile-o' );
+          		self.setState({isLoggedIn: true});
           		FlowRouter.go('/home');
-              self.setState({isLoggedIn: true});
         	}
       	});
 	}
 
-  goHome(){
-    FlowRouter.go('/home');
-  }
+  	goHome(){
+    	FlowRouter.go('/home');
+  	}
   	render() {
 
     const login = (
@@ -90,7 +90,7 @@ class Login extends TrackerReact(React.Component) {
             		</div>
           		</div>
         	</div>
-        	<button className="btn btn-secondary centrar" onClick={this.login1.bind(this)}>Login</button>
+        	<button className="btn btn-secondary centrar button1" onClick={this.login1.bind(this)}>Login</button>
       	</div>
     );
 
@@ -150,17 +150,27 @@ class Login extends TrackerReact(React.Component) {
 	              		<input className="newsletter_input1" type="e-mail"  id="email"/>
 	            	</div>
 	          	</div>
+							<div className="row">
+								<div className="col-sm">
+									<label className="tag1">PrivateKey MetaMask: </label>
+	              	<input className="newsletter_input1" type="text"  id="number"/>
+								</div>
+								<div className="col-sm">
+									<label className="tag1">PublicKey MetaMask: </label>
+	              	<input className="newsletter_input1" type="text"  id="number"/>
+								</div>
+							</div>
 
 	        </div>
-        	<button className="btn btn-dark registerbtn" onClick={this.register.bind(this)}>Registrar</button>
+        	<button className="btn btn-dark registerbtn button1" onClick={this.register.bind(this)}>Registrar</button>
       	</div>
     );
-	let loggedIn = this.state.isLoggedIn;
+	let logged = this.state.isLoggedIn;
     return (
     	<div>
     		<Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
     		<div id="loginView" className="background container-fluid">
-            { loggedIn ? (
+            { logged ? (
               <div className="row centerVert">
                 <button className="newsletter_button2" onClick={this.goHome}>Ver Eventos</button>
               </div>
@@ -253,7 +263,7 @@ class Login extends TrackerReact(React.Component) {
 						<div className="col-lg-3 col-md-6">
 							<div className="realtor_outer">
 								<div className="realtor">
-									<div className="realtor_image"><img src="img/christian.jpeg"/></div>
+									<div className="realtor_image"><img src="/img/christian.jpeg"/></div>
 									<div className="realtor_body">
 										<div className="realtor_title">Christian E. Rodriguez</div>
 										<div className="realtor_subtitle">CMO</div>

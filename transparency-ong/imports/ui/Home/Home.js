@@ -19,16 +19,17 @@ const MyCarousel2 = ({ eventos }) => (
         <Carousel className="carousel">
             {eventos.map((evento, i) =>
                 <Carousel.Item key={i} className="carouselItem">
-                    <a className="thumbnail" href="javascript:void(0)">
+                    <span className="thumbnail" href="javascript:void(0)">
                         <img  alt="900x500" className="carouselItemImg" src={getImageUrl(evento)}/>
                         <Carousel.Caption  className="items">
                             <div className="cuadroNegro">
                                 <h3>{evento.Nombre}</h3>
                                 <p>{evento.Descripcion}</p>
                                 <a href={"/verevento/" + evento.Id}><button className="btn btn-secondary">Ver Mas...</button></a>
+                                {Meteor.user().profile.admin ? (<a href={"/editeventos/" + evento.Id + "/addfactura"}><button className="btn btn-secondary addMargin">A&ntilde;adir Factura</button></a>) : (<div></div>)}
                             </div>
                         </Carousel.Caption>
-                    </a>
+                    </span>
                 </Carousel.Item>)}
         </Carousel>
     </div>
@@ -48,7 +49,7 @@ class Home extends TrackerReact(Component) {
     handleLogout(){
         this.setState({isLoggedIn: false});
         Meteor.logout();
-        FlowRouter.go('/');
+        Meteor.setTimeout(function(){FlowRouter.go('/')}, 250);
         Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
     }
     events(){

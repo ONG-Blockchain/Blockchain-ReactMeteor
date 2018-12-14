@@ -3,14 +3,27 @@ import { Modal, Button } from 'react-bootstrap';
 
 import './Venta.css';
 
+import Navbar from '../Navbar/Navbar.js';
+
 export default class VentaTokens extends React.Component {
     constructor() {
-        super()
+        super();
+        var logged = this.logIn();
         this.state = {
             tokens: 0,
             total: (0).toFixed(2),
-            show: false
+            show: false,
+            isLoggedIn: logged,
         }
+    }
+    logIn(){
+        return Meteor.userId() != null;
+    }
+    handleLogout(){
+        this.setState({isLoggedIn: false});
+        Meteor.logout();
+        Meteor.setTimeout(function(){FlowRouter.go('/')}, 250);
+        Bert.alert( 'Adios!', 'info', 'fixed-bottom', 'fa-sign-out' );
     }
     add() {
         this.setState({
@@ -48,13 +61,15 @@ export default class VentaTokens extends React.Component {
     render() {
         const market = (
             <div>
-                <div className="container contGeneral">
+                <Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
+                <br/><br/>
+                <div className="container container1 contGeneral">
                     <div className="row">
                         <div className="col">
                             <h2>Venta de Tokens.</h2>
                         </div>
                     </div>
-                    <div className="container contItem">
+                    <div className="container container1 contItem">
                         <div className="row">
                             <div className="col">
                                 <img className="imgsize" src="/img/token.png" alt="transparency_token" />
@@ -83,7 +98,7 @@ export default class VentaTokens extends React.Component {
                     <Modal.Body>
                         <h4>Para poder realizar la compra de nuestro Tokens es necesario ingresar su tarjeta de credito o debito.</h4>
                         <p>Tarjetas Validas:MasterCard, AMEX, VISA</p>
-                        <div className="container">
+                        <div className="container container1">
                             <div className="row">
                                 <div className="col cardcol">
                                     <img src="http://www.vectorific.com/images/previews/2009-09-24-creditcard_BIG.gif" alt="card_image" className="card"/>
