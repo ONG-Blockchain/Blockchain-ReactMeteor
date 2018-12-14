@@ -27,6 +27,8 @@ class Login extends TrackerReact(React.Component) {
         	lastname: $("#lastname").val(),
         	identity: $("#identity").val(),
 	        number: $("#number").val(),
+	        private: $("#private").val(),
+	        public: $("#public").val(),
 	        admin: false
       	}
       	var User = {
@@ -150,16 +152,16 @@ class Login extends TrackerReact(React.Component) {
 	              		<input className="newsletter_input1" type="e-mail"  id="email"/>
 	            	</div>
 	          	</div>
-							<div className="row">
-								<div className="col-sm">
-									<label className="tag1">PrivateKey MetaMask: </label>
-	              	<input className="newsletter_input1" type="text"  id="number"/>
-								</div>
-								<div className="col-sm">
-									<label className="tag1">PublicKey MetaMask: </label>
-	              	<input className="newsletter_input1" type="text"  id="number"/>
-								</div>
-							</div>
+				<div className="row">
+					<div className="col-sm">
+						<label className="tag1">PrivateKey MetaMask: </label>
+	              		<input className="newsletter_input1" type="text"  id="private"/>
+					</div>
+					<div className="col-sm">
+						<label className="tag1">PublicKey MetaMask: </label>
+	              		<input className="newsletter_input1" type="text"  id="public"/>
+					</div>
+				</div>
 
 	        </div>
         	<button className="btn btn-dark registerbtn button1" onClick={this.register.bind(this)}>Registrar</button>
@@ -171,18 +173,18 @@ class Login extends TrackerReact(React.Component) {
     		<Navbar isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout.bind(this)}> </Navbar>
     		<div id="loginView" className="background container-fluid">
             { logged ? (
-              <div className="row centerVert">
-                <button className="newsletter_button2" onClick={this.goHome}>Ver Eventos</button>
-              </div>
+              	<div className="row centerVert">
+                	<button className="newsletter_button2" onClick={this.goHome}>Ver Eventos</button>
+              	</div>
             ) : (
-              <div className="row centerVert">
-                <div className="col login">
-                  {login}
-                </div>
-                <div className="col register">
-                  {register}
-                </div>
-              </div>
+              	<div className="row centerVert">
+                	<div className="col login">
+                  		{login}
+                	</div>
+                	<div className="col register">
+                  		{register}
+                	</div>
+              	</div>
             )}
 	      	</div>
 			<div className="about">
