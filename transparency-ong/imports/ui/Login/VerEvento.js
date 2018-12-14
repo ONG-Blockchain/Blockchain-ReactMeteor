@@ -22,8 +22,10 @@ class VerEvento extends TrackerReact(React.Component) {
             tokensDonar:0,
             my_privkey: '5017FE33B8D09792A6755A2236D18118FE8159675EBA85C1C2F3B71F8CB7EDFB',
             myAddress: '0xc3Ba293Ee68A457960F2598D73c0197D29f285D9',
-            destAddress: '0x80Fad9325Ccc5E9191632Aa69D81fcE2683D36C3'         
+            destAddress: '0x80Fad9325Ccc5E9191632Aa69D81fcE2683D36C3',
+            tokensUsuario: 0
         }
+        this.getBalance(this.state.myAddress);
     }
     logIn() {
         return Meteor.userId() != null;
@@ -647,6 +649,7 @@ class VerEvento extends TrackerReact(React.Component) {
         var contract = new web3.eth.Contract(abiArray, contractAddress, { from: myAddress });
         var balance = await contract.methods.balanceOf(myAddress).call();
         console.log(`Balance before send: ${balance}`);
+        this.setState({ tokensUsuario: balance });
     }
 
     render() {
@@ -711,7 +714,7 @@ class VerEvento extends TrackerReact(React.Component) {
                                 <div className="row">
                                     <div className="col">
                                         <label>Total de tus Tokens:</label>
-                                        <label>[tokens del usuario]</label>
+                                        <label>{this.state.tokensUsuario}</label>
                                     </div>
                                     <div className="col tok">
                                         <button className="btn btn-outline-danger" onClick={this.sub.bind(this)}>-</button>
